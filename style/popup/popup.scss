@@ -1,0 +1,25 @@
+$background-color: #424242;
+$foreground-color: white;
+
+.news-enhancer-wordcloud-button {
+  border: 0;
+  background: $background-color;
+  color: $foreground-color;
+  font-weight: bold;
+}
+
+.news-enhancer-wordcloud-button:focus {
+  outline: none;
+}
+.news-enhancer-wordcloud-button:hover {
+  border: 3px solid $background-color;
+  color: $background-color;
+  background: $foreground-color;
+}
+
+.news-enhancer-wordcloud-button:active {
+  border: 1px solid $background-color;
+  color: $background-color;
+  font-weight: 100;
+  background: $foreground-color;
+}

@@ -1,0 +1,17 @@
+@import "icon";
+@import "overlay";
+@import "report";
+@import "revision_mode";
+
+.news-enhancer-headline {
+  right: 0 !important;
+  top: 0 !important;
+  z-index: 9999;
+  position: absolute;
+  display: inline-block;
+
+  > * {
+    font-size: 18px !important;
+  }
+
+}

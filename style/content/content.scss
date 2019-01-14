@@ -1,0 +1,16 @@
+$fa-font-path: "../../node_modules/@fortawesome/fontawesome-free-webfonts/webfonts" !default;
+@import "../../node_modules/@fortawesome/fontawesome-free-webfonts/scss/fontawesome";
+@import "../../node_modules/@fortawesome/fontawesome-free-webfonts/scss/fa-solid";
+
+$roboto-font-path: "" !default;
+@import "../../node_modules/roboto-fontface/css/roboto/sass/roboto-fontface";
+
+@import "headline/headline";
+@import "wordcloud/wordcloud";
+@import "modal/modal";
+@import "submission/submission";
+@import "article/article";
+
+.news-enhancer {
+  font-family: 'Roboto', sans-serif;
+}

@@ -1,0 +1,16 @@
+$primary: #424242;
+$secondary: white;
+
+$icon-size: 60px;
+$icon-padding: 10px;
+
+.news-enhancer-article-mode-report {
+  display: flex;
+  flex-direction: column-reverse;
+  position: fixed;
+  min-width: $icon-size;
+  min-height: $icon-size;
+  bottom: $icon-padding;
+  right: $icon-padding;
+  z-index: 999999;
+}

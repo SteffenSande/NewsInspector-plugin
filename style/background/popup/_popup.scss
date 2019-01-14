@@ -1,0 +1,17 @@
+.news-enhancer-popup {
+  min-width: 400px;
+  height: 200px;
+}
+
+.news-enhancer-button {
+  background-color: #424242;
+  color: white;
+  border: none;
+  height: 40px;
+  font-size: 20px;
+  font-weight: bold;
+
+  &:focus {
+    outline: none;
+  }
+}
