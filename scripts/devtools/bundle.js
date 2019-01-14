@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 51);
+/******/ 	return __webpack_require__(__webpack_require__.s = 72);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -834,388 +834,14 @@ var ReportCategory;
 /***/ }),
 /* 32 */,
 /* 33 */,
-/* 34 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__storageType__ = __webpack_require__(39);
-
-class Storage {
-    constructor() {
-        this.sites = new __WEBPACK_IMPORTED_MODULE_0__storageType__["default"]();
-        this.limits = new __WEBPACK_IMPORTED_MODULE_0__storageType__["default"]();
-        this.reportCategory = new __WEBPACK_IMPORTED_MODULE_0__storageType__["default"]();
-        if (Storage._instance) {
-            throw new Error("Error: Instantiation failed: Use StorageContainer.getInstance() instead of new.");
-        }
-        Storage._instance = this;
-    }
-    static getInstance() {
-        return Storage._instance;
-    }
-}
-Storage._instance = new Storage();
-/* harmony default export */ __webpack_exports__["default"] = (Storage);
-
-
-/***/ }),
+/* 34 */,
 /* 35 */,
 /* 36 */,
 /* 37 */,
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__storage_storage__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_api__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_debug__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__contextMenu__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_notification__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config_constants__ = __webpack_require__(1);
-
-
-
-
-
-
-
-class Background {
-    constructor(cloud) {
-        this.storage = __WEBPACK_IMPORTED_MODULE_0__storage_storage__["default"].getInstance();
-        this.api = new __WEBPACK_IMPORTED_MODULE_2__util_api__["default"]();
-        this.notifyTabOfNewData = (site) => {
-            chrome.tabs.query({}, (tabs) => {
-                for (let tab of tabs) {
-                    if (tab.url.indexOf(site.base_url) > -1) {
-                        chrome.tabs.sendMessage(tab.id, Object(__WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["createMessage"])(__WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].SITES_UPDATED));
-                        __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info("Updating tab", tab.url);
-                    }
-                }
-            });
-        };
-        this._wordCloud = cloud;
-    }
-    init() {
-        this.contextMenu = new __WEBPACK_IMPORTED_MODULE_4__contextMenu__["default"](this._wordCloud);
-        this.loadSupportedSites();
-        // Reloads all headlines each minute
-        this.cacheReloadToken = setInterval(this.reloadCache.bind(this), __WEBPACK_IMPORTED_MODULE_6__config_constants__["RELOAD_DELAY"]);
-    }
-    ;
-    /**
-     * Reloads all the headlines for all sites
-     */
-    reloadHeadlines() {
-        for (let index = 0; index < this.storage.sites.count(); index++) {
-            this.getHeadlinesOnFrontPage(this.storage.sites.at(index).data)
-                .then(() => {
-                this.notifyTabOfNewData(this.storage.sites.at(index).data);
-            });
-        }
-    }
-    /**
-     * Reloads storage with headlines and limits
-     */
-    reloadCache() {
-        this.load(this.storage.limits, __WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.LIMIT, 'key')
-            .then(() => this.reloadHeadlines());
-        this.load(this.storage.reportCategory, __WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.REPORT_CATEGORY, 'category')
-            .then(() => this.contextMenu.reload());
-    }
-    load(storage, apiCall, key) {
-        return this.api.get(apiCall)
-            .then((elements) => {
-            for (let elm of elements) {
-                let l = storage.get(elm[key.toString()].toString());
-                let item = {
-                    key: elm[key.toString()].toString(),
-                    data: elm
-                };
-                if (l === null) {
-                    storage.add(item);
-                }
-                else {
-                    storage.update(item);
-                }
-            }
-            __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Fetched ${elements.length} from ${apiCall}`, elements);
-        });
-    }
-    ;
-    /**
-     * Checks if a site is supported
-     * If so, it returns all the current headlines objects
-     * @param url
-     * @param callback function to execute with the data from api
-     */
-    siteIsSupported(url, callback) {
-        let sites = [];
-        if (this.storage.sites.exists(url)) {
-            sites = [this.storage.sites.get(url)];
-        }
-        else {
-            sites = this.storage.sites.all();
-        }
-        let data = {
-            sites: sites,
-            limits: this.storage.limits.all()
-        };
-        return callback(data);
-    }
-    ;
-    /**
-     * Fetches all headlines for a site
-     * @param site
-     * @returns {Promise<void>}
-     */
-    getHeadlinesOnFrontPage(site) {
-        return new Promise((resolve, reject) => {
-            this.api.get(`${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SITE}${site.id}/${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.HEADLINE}`)
-                .then((headlines) => {
-                __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Downloaded ${headlines.length} Headlines downloaded for ${site.name}`, headlines);
-                let item = this.storage.sites.get(site.base_url);
-                if (item !== null) {
-                    item.data.headlines = headlines;
-                    this.storage.sites.update(item);
-                }
-                resolve();
-            })
-                .catch((error) => {
-                __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].error(error);
-                reject();
-            });
-        });
-    }
-    ;
-    /**
-     * Fetches all the supported sites, then their headlines
-     */
-    loadSupportedSites() {
-        this.api.get(__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SITE)
-            .then((data) => {
-            let sites = data;
-            __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Fetched ${sites.length} sites`, sites);
-            for (let site of sites) {
-                site.headlines = [];
-                let item = {
-                    data: site,
-                    key: site.base_url,
-                };
-                this.storage.sites.add(item);
-            }
-            this.reloadCache();
-        });
-    }
-    ;
-    submit(submission) {
-        this.api.post(submission.url, submission.payload)
-            .then((data) => {
-            if (submission.notification !== null) {
-                submission.notification.message = data.message;
-                __WEBPACK_IMPORTED_MODULE_5__models_notification__["default"].notifyUser(submission.notification);
-            }
-            if (!data.error)
-                this.reloadCache();
-        });
-    }
-    fetchArticle(data, callback) {
-        let url = `${data.siteId}/${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.ARTICLE}${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SEARCH}`;
-        this.api.get(`${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SITE}${url}?url=${data.url}`)
-            .then((data) => {
-            let article = data;
-            __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Fetched article ${article.headline}`, article);
-            let reportCategories = [];
-            for (let item of this.storage.reportCategory.all()) {
-                reportCategories.push(item.data);
-            }
-            callback({ article: article, reportCategories: reportCategories });
-        }).catch((erro) => {
-            callback({ article: null });
-        });
-    }
-    fetchHeadlineDataForLinks(data, callback) {
-        this.api.post(`${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SEARCH}${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.HEADLINES}`, data)
-            .then((response) => {
-            callback({ info: response });
-        }).catch((erro) => {
-            callback({ article: null });
-        });
-    }
-}
-/* harmony default export */ __webpack_exports__["default"] = (Background);
-
-
-/***/ }),
-/* 39 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-class StorageType {
-    constructor() {
-        this.storage = [];
-    }
-    add(item) {
-        this.storage.push(item);
-    }
-    exists(key) {
-        return this.find_index_of(key) !== -1;
-    }
-    find_index_of(key) {
-        if (key === undefined)
-            return -1;
-        return this.storage.findIndex((item) => key.indexOf(item.key) !== -1);
-    }
-    get(key) {
-        let index = this.find_index_of(key);
-        if (index > -1) {
-            return this.storage[index];
-        }
-        return null;
-    }
-    update(item) {
-        let index = this.find_index_of(item.key);
-        if (index > -1)
-            this.storage[index] = item;
-    }
-    delete(key) {
-        let index = this.find_index_of(key);
-        if (index > -1) {
-            this.storage.splice(index, 1);
-        }
-    }
-    count() {
-        return this.storage.length;
-    }
-    at(index) {
-        if (index > this.count())
-            return null;
-        return this.storage[index];
-    }
-    all() {
-        return this.storage;
-    }
-}
-/* harmony default export */ __webpack_exports__["default"] = (StorageType);
-
-
-/***/ }),
-/* 40 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__storage_storage__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_notification__ = __webpack_require__(8);
-
-
-
-
-class ContextMenu {
-    constructor(cloud) {
-        this._storage = __WEBPACK_IMPORTED_MODULE_0__storage_storage__["default"].getInstance();
-        this.contextMenuElementNewsEnhancerId = -1;
-        this.reload = () => {
-            chrome.contextMenus.removeAll();
-            this.createContextMenuWordcloud();
-        };
-        this.createContextMenuSubmission = (submission, textareaName, formTitle) => {
-            chrome.contextMenus.create({
-                title: submission.notification.title,
-                contexts: ["link"],
-                onclick: (info, tab) => {
-                    Object(__WEBPACK_IMPORTED_MODULE_2__util_util__["createSubmissionForm"])(submission, textareaName, formTitle)
-                        .then((data) => chrome.tabs.sendMessage(tab.id, Object(__WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["createMessage"])(__WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].SHOW_IN_MODAL, data)));
-                }
-            });
-        };
-        this.createContextMenuWordcloud = () => {
-            chrome.contextMenus.create({
-                title: "Wordcloud",
-                contexts: ["link"],
-                onclick: (info, tab) => {
-                    if (this.contextMenuElementNewsEnhancerId === -1)
-                        __WEBPACK_IMPORTED_MODULE_3__models_notification__["default"].notifyUser({ title: "Wordcloud error", message: "Did not click a supported headline or article" });
-                    else
-                        this._wordCloud.showWordCloudForId(this.contextMenuElementNewsEnhancerId, tab);
-                }
-            });
-        };
-        this._wordCloud = cloud;
-    }
-}
-/* harmony default export */ __webpack_exports__["default"] = (ContextMenu);
-
-
-/***/ }),
-/* 41 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_api__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_messageTypes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_constants__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_notification__ = __webpack_require__(8);
-
-
-
-
-
-class Wordcloud {
-    constructor() {
-        this._api = new __WEBPACK_IMPORTED_MODULE_0__util_api__["default"]();
-        this._classPrefix = ".news-enhancer-wordcloud";
-    }
-    showWordCloudForId(id, tab) {
-        this._api.get(`${__WEBPACK_IMPORTED_MODULE_0__util_api__["default"].endpoints.WORDCLOUD_GENERATOR_ARTICLE}${id}`)
-            .then((data) => {
-            if (typeof data.error === "undefined")
-                this.showWordCloudForLink({ word_cloud_link: data.link, tab: tab });
-            else
-                __WEBPACK_IMPORTED_MODULE_4__models_notification__["default"].notifyUser({ title: "Wordcloud error",
-                    message: data.error });
-        })
-            .catch(() => __WEBPACK_IMPORTED_MODULE_4__models_notification__["default"].notifyUser({ title: "Wordcloud error",
-            message: "Could not retrive wordcloud" }));
-    }
-    showWordCloudForLink(data) {
-        let link = `${this._api.BaseUrl}${data.word_cloud_link}`;
-        if (data.word_cloud_link.startsWith("/"))
-            link = `${this._api.BaseUrl}${data.word_cloud_link.substring(1, data.word_cloud_link.length)}`;
-        this._api.image(link)
-            .then((imageData) => {
-            Object(__WEBPACK_IMPORTED_MODULE_1__util_util__["imageToBase64"])(imageData)
-                .then((img) => {
-                this.showWordcloud(img, data.tab);
-            });
-        });
-    }
-    /**
-     * Sends a message to the content script to show this wordcloud
-     * @param {string} img
-     * @param {chrome.tabs.Tab} tab to show wordcloud in
-     */
-    showWordcloud(img, tab) {
-        Object(__WEBPACK_IMPORTED_MODULE_1__util_util__["getHtmlTemplate"])(__WEBPACK_IMPORTED_MODULE_3__config_constants__["HTML_FILES"].templates.wordcloud, this._classPrefix)
-            .then((html) => {
-            let wordcloud = html.cloneNode(true);
-            wordcloud.querySelector(`${this._classPrefix}-image`).setAttribute("src", img);
-            let message = Object(__WEBPACK_IMPORTED_MODULE_2__config_messageTypes__["createMessage"])(__WEBPACK_IMPORTED_MODULE_2__config_messageTypes__["messageTypes"].SHOW_IN_MODAL, { html: wordcloud.outerHTML });
-            chrome.tabs.sendMessage(tab.id, message);
-        });
-    }
-}
-/* harmony default export */ __webpack_exports__["default"] = (Wordcloud);
-
-
-/***/ }),
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */,
 /* 42 */,
 /* 43 */,
 /* 44 */,
@@ -1225,7 +851,28 @@ class Wordcloud {
 /* 48 */,
 /* 49 */,
 /* 50 */,
-/* 51 */
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */,
+/* 60 */,
+/* 61 */,
+/* 62 */,
+/* 63 */,
+/* 64 */,
+/* 65 */,
+/* 66 */,
+/* 67 */,
+/* 68 */,
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
@@ -1258,130 +905,37 @@ __webpack_require__(31);
 __webpack_require__(4);
 __webpack_require__(2);
 __webpack_require__(0);
-__webpack_require__(38);
-__webpack_require__(40);
-__webpack_require__(52);
-__webpack_require__(34);
-__webpack_require__(53);
-__webpack_require__(39);
-__webpack_require__(41);
-module.exports = __webpack_require__(54);
+module.exports = __webpack_require__(73);
 
 
 /***/ }),
-/* 52 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__background__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_debug__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_notification__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__wordcloud__ = __webpack_require__(41);
-
-
-
-
-
-let wordcloud = new __WEBPACK_IMPORTED_MODULE_4__wordcloud__["default"]();
-let background = new __WEBPACK_IMPORTED_MODULE_0__background__["default"](wordcloud);
-background.init();
-// background.js
-let connections = {};
-chrome.runtime.onConnect.addListener(function (port) {
-    let extensionListener = function (message, sender, sendResponse) {
-        // The original connection event doesn't include the tab ID of the
-        // DevTools page, so we need to send it explicitly.
-        if (message.name == "init") {
-            connections[message.tabId] = port;
-            __WEBPACK_IMPORTED_MODULE_2__util_debug__["default"].info("init");
-            return;
-        }
-        // other message handling
-        __WEBPACK_IMPORTED_MODULE_2__util_debug__["default"].info("something else lol");
-    };
-    port.postMessage('f yeah');
-    // Listen to messages sent from the DevTools page
-    // @ts-ignore
-    port.onMessage.addListener(extensionListener);
-    port.onDisconnect.addListener(function (port) {
-        // @ts-ignore
-        port.onMessage.removeListener(extensionListener);
-        let tabs = Object.keys(connections);
-        for (let i = 0, len = tabs.length; i < len; i++) {
-            if (connections[tabs[i]] == port) {
-                delete connections[tabs[i]];
-                break;
-            }
-        }
-    });
-});
-chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
-    __WEBPACK_IMPORTED_MODULE_2__util_debug__["default"].info("Message to background", request.type, request.data);
-    if (request != "init") {
-        switch (request.type) {
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].TAB_LOADED_URL:
-                background.siteIsSupported(request.data, sendResponse);
-                break;
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].GENERATE_WORDCLOUD_FOR_SITE:
-                wordcloud.showWordCloudForLink(request.data);
-                break;
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].NOTIFY_USER:
-                __WEBPACK_IMPORTED_MODULE_3__models_notification__["default"].notifyUser(request.data);
-                break;
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].IS_SITE_SUPPORTED:
-                background.siteIsSupported(request.data, sendResponse);
-                break;
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].TOGGLE_CONTEXT_MENU:
-                background.contextMenu.contextMenuElementNewsEnhancerId = request.data;
-                break;
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].SUBMIT:
-                let submissionData = request.data;
-                background.submit(submissionData);
-                break;
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].FETCH_ARTICLE:
-                background.fetchArticle(request.data, sendResponse);
-                break;
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].WORDCLOUD_FOR_ARTICLE:
-                wordcloud.showWordCloudForLink(Object.assign(request.data, { tab: sender.tab }));
-                break;
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].FETCH_INFO_FOR_LINKS:
-                background.fetchHeadlineDataForLinks(request.data, sendResponse);
-                break;
-            case __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].NOTIFY_DEV:
-                if (sender.tab) {
-                    __WEBPACK_IMPORTED_MODULE_2__util_debug__["default"].info("gets here");
-                    let tabId = sender.tab.id;
-                    if (tabId in connections) {
-                        __WEBPACK_IMPORTED_MODULE_2__util_debug__["default"].info("Sending message to the dev tool " + request.data + "to tab id " + tabId);
-                        connections[tabId].postMessage(request.data);
-                    }
-                    else {
-                        console.log("Tab not found in connection list.");
-                    }
-                }
-                else {
-                    console.log("sender.tab not defined.");
-                }
-                break;
-        }
-    }
-    return true;
-});
-
-
-/***/ }),
-/* 53 */
+/* 73 */
 /***/ (function(module, exports) {
 
+chrome.devtools.panels.create("Nyhets inspeksjon", "icons/icon.jpg", "html/panel.html", function (panel) {
+    console.log("panel created");
+});
+/**
+ * Create a connection to the background script
+ *
+ */
+// Create a connection to the background page
+let backgroundPageConnection = chrome.runtime.connect({
+    name: "panel"
+});
+backgroundPageConnection.postMessage({
+    name: "init",
+    tabId: chrome.devtools.inspectedWindow.tabId
+});
+backgroundPageConnection.onMessage.addListener(function (message) {
+    // Data has arrived in devtools page!!
+    console.log("hello from devtools");
+    console.log(document.getElementById("container").innerHTML);
+    console.log(document.getElementById("content").innerHTML);
+    document.getElementById("content").innerHTML =
+        "Helle message from  the dev script that was activated upon a message";
+});
 
-
-/***/ }),
-/* 54 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
