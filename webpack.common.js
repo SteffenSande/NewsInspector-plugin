@@ -6,7 +6,9 @@ var getFileOfType = function(parent, dir, type) {
 };
 
 var getFilesInDir = function(dir) {
-  return getFileOfType("scripts", dir, "ts");
+  return getFileOfType("scripts", dir, "ts").concat(
+    getFileOfType("scripts", dir, "tsx")
+  );
 };
 
 var getStyles = function(dir) {
@@ -33,7 +35,8 @@ module.exports = {
     popup: commonJs.concat(getFilesInDir("popup").concat(getStyles("popup"))),
     devtools: commonJs.concat(
       getFilesInDir("devtools").concat(getStyles("devtools"))
-    )
+    ),
+    panels: commonJs.concat(getFilesInDir("panel")).concat(getStyles("panel"))
   },
   module: {
     rules: [
@@ -76,6 +79,6 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: [".ts"]
+    extensions: [".ts", ".tsx", "js", "jsx"]
   }
 };

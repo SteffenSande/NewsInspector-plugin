@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 69);
+/******/ 	return __webpack_require__(__webpack_require__.s = 73);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -305,6 +305,29 @@ function find_headline_id(headlineUrl, urlTemplates) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+class Log {
+    static debug(...log) {
+        console.log("Debug", log);
+    }
+    static info(...log) {
+        console.log("Info", log);
+    }
+    static error(...log) {
+        console.log("Error", arguments);
+    }
+    static warning(...log) {
+        console.log("Warning", arguments);
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (Log);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const ID = {
     NOTIFICATION: {
         REPORT_LINK: "reportNotificationId"
@@ -340,29 +363,6 @@ const MINUTE = 1000 * 60;
 const RELOAD_DELAY = 10 * MINUTE;
 /* harmony export (immutable) */ __webpack_exports__["RELOAD_DELAY"] = RELOAD_DELAY;
 
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-class Log {
-    static debug(...log) {
-        console.log("Debug", log);
-    }
-    static info(...log) {
-        console.log("Info", log);
-    }
-    static error(...log) {
-        console.log("Error", arguments);
-    }
-    static warning(...log) {
-        console.log("Warning", arguments);
-    }
-}
-/* harmony default export */ __webpack_exports__["default"] = (Log);
 
 
 /***/ }),
@@ -405,7 +405,7 @@ function createMessage(type, data = {}) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_debug__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_debug__ = __webpack_require__(1);
 
 class Api {
     constructor() {
@@ -422,10 +422,10 @@ class Api {
     get(endpoint) {
         return new Promise((resolve, reject) => {
             fetch(`${this._apiBase}${endpoint}`)
-                .then((response) => {
+                .then(response => {
                 resolve(response.json());
             })
-                .catch((error) => {
+                .catch(error => {
                 __WEBPACK_IMPORTED_MODULE_0__util_debug__["default"].error(`Could not get ${endpoint}`, error);
                 reject();
             });
@@ -435,7 +435,7 @@ class Api {
         return new Promise((resolve, reject) => {
             fetch(`${endpoint}`)
                 .then(response => resolve(response.blob()))
-                .catch((error) => {
+                .catch(error => {
                 __WEBPACK_IMPORTED_MODULE_0__util_debug__["default"].error(`Could not get ${endpoint}`, error);
                 reject();
             });
@@ -443,14 +443,14 @@ class Api {
     }
     post(endpoint, payload) {
         return fetch(`${this._apiBase}${endpoint}`, this.post_data(payload))
-            .then((response) => {
+            .then(response => {
             return response.json();
         })
-            .catch((error) => {
+            .catch(error => {
             __WEBPACK_IMPORTED_MODULE_0__util_debug__["default"].error(`Could post ${endpoint}`, error);
         });
     }
-    post_data(payload, header = 'application/x-www-form-urlencoded') {
+    post_data(payload, header = "application/x-www-form-urlencoded") {
         let formBody = "";
         for (let property in payload) {
             let encodedKey = encodeURIComponent(property);
@@ -458,27 +458,24 @@ class Api {
             formBody += encodedKey + "=" + encodedValue + "&";
         }
         return {
-            method: 'POST',
-            headers: [
-                ['Accept', 'application/json'],
-                ['Content-Type', header]
-            ],
+            method: "POST",
+            headers: [["Accept", "application/json"], ["Content-Type", header]],
             body: formBody
         };
     }
 }
 Api.endpoints = {
-    REPORT: 'submission/headline/report/',
-    SITE: 'site/',
-    ARTICLE: 'article/',
-    HEADLINE: 'headline/',
-    REPORT_CATEGORY: 'submission/category/',
-    LIMIT: 'limit/',
+    REPORT: "submission/headline/report/",
+    SITE: "site/",
+    ARTICLE: "article/",
+    HEADLINE: "headline/",
+    REPORT_CATEGORY: "submission/category/",
+    LIMIT: "limit/",
     WORDCLOUD_GENERATOR_SITE: "wordcloud_generator/site/",
     WORDCLOUD_GENERATOR_ARTICLE: "wordcloud_generator/article/",
-    SUBMIT_SUMMARY: 'submission/headline/summary/',
-    SEARCH: 'search/',
-    HEADLINES: 'headlines/'
+    SUBMIT_SUMMARY: "submission/headline/summary/",
+    SEARCH: "search/",
+    HEADLINES: "headlines/"
 };
 /* harmony default export */ __webpack_exports__["default"] = (Api);
 
@@ -850,7 +847,9 @@ var ReportCategory;
 /* 47 */,
 /* 48 */,
 /* 49 */,
-/* 50 */
+/* 50 */,
+/* 51 */,
+/* 52 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -889,8 +888,6 @@ class Popup {
 
 
 /***/ }),
-/* 51 */,
-/* 52 */,
 /* 53 */,
 /* 54 */,
 /* 55 */,
@@ -907,10 +904,14 @@ class Popup {
 /* 66 */,
 /* 67 */,
 /* 68 */,
-/* 69 */
+/* 69 */,
+/* 70 */,
+/* 71 */,
+/* 72 */,
+/* 73 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
+__webpack_require__(2);
 __webpack_require__(3);
 __webpack_require__(10);
 __webpack_require__(12);
@@ -938,26 +939,26 @@ __webpack_require__(9);
 __webpack_require__(30);
 __webpack_require__(31);
 __webpack_require__(4);
-__webpack_require__(2);
+__webpack_require__(1);
 __webpack_require__(0);
-__webpack_require__(70);
-__webpack_require__(50);
-module.exports = __webpack_require__(71);
+__webpack_require__(74);
+__webpack_require__(52);
+module.exports = __webpack_require__(75);
 
 
 /***/ }),
-/* 70 */
+/* 74 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__popup__ = __webpack_require__(50);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__popup__ = __webpack_require__(52);
 
 let p = new __WEBPACK_IMPORTED_MODULE_0__popup__["default"]();
 
 
 /***/ }),
-/* 71 */
+/* 75 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

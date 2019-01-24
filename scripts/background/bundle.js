@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 51);
+/******/ 	return __webpack_require__(__webpack_require__.s = 55);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -305,6 +305,29 @@ function find_headline_id(headlineUrl, urlTemplates) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+class Log {
+    static debug(...log) {
+        console.log("Debug", log);
+    }
+    static info(...log) {
+        console.log("Info", log);
+    }
+    static error(...log) {
+        console.log("Error", arguments);
+    }
+    static warning(...log) {
+        console.log("Warning", arguments);
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (Log);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const ID = {
     NOTIFICATION: {
         REPORT_LINK: "reportNotificationId"
@@ -340,29 +363,6 @@ const MINUTE = 1000 * 60;
 const RELOAD_DELAY = 10 * MINUTE;
 /* harmony export (immutable) */ __webpack_exports__["RELOAD_DELAY"] = RELOAD_DELAY;
 
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-class Log {
-    static debug(...log) {
-        console.log("Debug", log);
-    }
-    static info(...log) {
-        console.log("Info", log);
-    }
-    static error(...log) {
-        console.log("Error", arguments);
-    }
-    static warning(...log) {
-        console.log("Warning", arguments);
-    }
-}
-/* harmony default export */ __webpack_exports__["default"] = (Log);
 
 
 /***/ }),
@@ -405,7 +405,7 @@ function createMessage(type, data = {}) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_debug__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_debug__ = __webpack_require__(1);
 
 class Api {
     constructor() {
@@ -422,10 +422,10 @@ class Api {
     get(endpoint) {
         return new Promise((resolve, reject) => {
             fetch(`${this._apiBase}${endpoint}`)
-                .then((response) => {
+                .then(response => {
                 resolve(response.json());
             })
-                .catch((error) => {
+                .catch(error => {
                 __WEBPACK_IMPORTED_MODULE_0__util_debug__["default"].error(`Could not get ${endpoint}`, error);
                 reject();
             });
@@ -435,7 +435,7 @@ class Api {
         return new Promise((resolve, reject) => {
             fetch(`${endpoint}`)
                 .then(response => resolve(response.blob()))
-                .catch((error) => {
+                .catch(error => {
                 __WEBPACK_IMPORTED_MODULE_0__util_debug__["default"].error(`Could not get ${endpoint}`, error);
                 reject();
             });
@@ -443,14 +443,14 @@ class Api {
     }
     post(endpoint, payload) {
         return fetch(`${this._apiBase}${endpoint}`, this.post_data(payload))
-            .then((response) => {
+            .then(response => {
             return response.json();
         })
-            .catch((error) => {
+            .catch(error => {
             __WEBPACK_IMPORTED_MODULE_0__util_debug__["default"].error(`Could post ${endpoint}`, error);
         });
     }
-    post_data(payload, header = 'application/x-www-form-urlencoded') {
+    post_data(payload, header = "application/x-www-form-urlencoded") {
         let formBody = "";
         for (let property in payload) {
             let encodedKey = encodeURIComponent(property);
@@ -458,27 +458,24 @@ class Api {
             formBody += encodedKey + "=" + encodedValue + "&";
         }
         return {
-            method: 'POST',
-            headers: [
-                ['Accept', 'application/json'],
-                ['Content-Type', header]
-            ],
+            method: "POST",
+            headers: [["Accept", "application/json"], ["Content-Type", header]],
             body: formBody
         };
     }
 }
 Api.endpoints = {
-    REPORT: 'submission/headline/report/',
-    SITE: 'site/',
-    ARTICLE: 'article/',
-    HEADLINE: 'headline/',
-    REPORT_CATEGORY: 'submission/category/',
-    LIMIT: 'limit/',
+    REPORT: "submission/headline/report/",
+    SITE: "site/",
+    ARTICLE: "article/",
+    HEADLINE: "headline/",
+    REPORT_CATEGORY: "submission/category/",
+    LIMIT: "limit/",
     WORDCLOUD_GENERATOR_SITE: "wordcloud_generator/site/",
     WORDCLOUD_GENERATOR_ARTICLE: "wordcloud_generator/article/",
-    SUBMIT_SUMMARY: 'submission/headline/summary/',
-    SEARCH: 'search/',
-    HEADLINES: 'headlines/'
+    SUBMIT_SUMMARY: "submission/headline/summary/",
+    SEARCH: "search/",
+    HEADLINES: "headlines/"
 };
 /* harmony default export */ __webpack_exports__["default"] = (Api);
 
@@ -833,13 +830,12 @@ var ReportCategory;
 
 /***/ }),
 /* 32 */,
-/* 33 */,
-/* 34 */
+/* 33 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__storageType__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__storageType__ = __webpack_require__(34);
 
 class Storage {
     constructor() {
@@ -860,196 +856,7 @@ Storage._instance = new Storage();
 
 
 /***/ }),
-/* 35 */,
-/* 36 */,
-/* 37 */,
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__storage_storage__ = __webpack_require__(34);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_api__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_debug__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__contextMenu__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_notification__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config_constants__ = __webpack_require__(1);
-
-
-
-
-
-
-
-class Background {
-    constructor(cloud) {
-        this.storage = __WEBPACK_IMPORTED_MODULE_0__storage_storage__["default"].getInstance();
-        this.api = new __WEBPACK_IMPORTED_MODULE_2__util_api__["default"]();
-        this.notifyTabOfNewData = (site) => {
-            chrome.tabs.query({}, (tabs) => {
-                for (let tab of tabs) {
-                    if (tab.url.indexOf(site.base_url) > -1) {
-                        chrome.tabs.sendMessage(tab.id, Object(__WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["createMessage"])(__WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].SITES_UPDATED));
-                        __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info("Updating tab", tab.url);
-                    }
-                }
-            });
-        };
-        this._wordCloud = cloud;
-    }
-    init() {
-        this.contextMenu = new __WEBPACK_IMPORTED_MODULE_4__contextMenu__["default"](this._wordCloud);
-        this.loadSupportedSites();
-        // Reloads all headlines each minute
-        this.cacheReloadToken = setInterval(this.reloadCache.bind(this), __WEBPACK_IMPORTED_MODULE_6__config_constants__["RELOAD_DELAY"]);
-    }
-    ;
-    /**
-     * Reloads all the headlines for all sites
-     */
-    reloadHeadlines() {
-        for (let index = 0; index < this.storage.sites.count(); index++) {
-            this.getHeadlinesOnFrontPage(this.storage.sites.at(index).data)
-                .then(() => {
-                this.notifyTabOfNewData(this.storage.sites.at(index).data);
-            });
-        }
-    }
-    /**
-     * Reloads storage with headlines and limits
-     */
-    reloadCache() {
-        this.load(this.storage.limits, __WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.LIMIT, 'key')
-            .then(() => this.reloadHeadlines());
-        this.load(this.storage.reportCategory, __WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.REPORT_CATEGORY, 'category')
-            .then(() => this.contextMenu.reload());
-    }
-    load(storage, apiCall, key) {
-        return this.api.get(apiCall)
-            .then((elements) => {
-            for (let elm of elements) {
-                let l = storage.get(elm[key.toString()].toString());
-                let item = {
-                    key: elm[key.toString()].toString(),
-                    data: elm
-                };
-                if (l === null) {
-                    storage.add(item);
-                }
-                else {
-                    storage.update(item);
-                }
-            }
-            __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Fetched ${elements.length} from ${apiCall}`, elements);
-        });
-    }
-    ;
-    /**
-     * Checks if a site is supported
-     * If so, it returns all the current headlines objects
-     * @param url
-     * @param callback function to execute with the data from api
-     */
-    siteIsSupported(url, callback) {
-        let sites = [];
-        if (this.storage.sites.exists(url)) {
-            sites = [this.storage.sites.get(url)];
-        }
-        else {
-            sites = this.storage.sites.all();
-        }
-        let data = {
-            sites: sites,
-            limits: this.storage.limits.all()
-        };
-        return callback(data);
-    }
-    ;
-    /**
-     * Fetches all headlines for a site
-     * @param site
-     * @returns {Promise<void>}
-     */
-    getHeadlinesOnFrontPage(site) {
-        return new Promise((resolve, reject) => {
-            this.api.get(`${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SITE}${site.id}/${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.HEADLINE}`)
-                .then((headlines) => {
-                __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Downloaded ${headlines.length} Headlines downloaded for ${site.name}`, headlines);
-                let item = this.storage.sites.get(site.base_url);
-                if (item !== null) {
-                    item.data.headlines = headlines;
-                    this.storage.sites.update(item);
-                }
-                resolve();
-            })
-                .catch((error) => {
-                __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].error(error);
-                reject();
-            });
-        });
-    }
-    ;
-    /**
-     * Fetches all the supported sites, then their headlines
-     */
-    loadSupportedSites() {
-        this.api.get(__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SITE)
-            .then((data) => {
-            let sites = data;
-            __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Fetched ${sites.length} sites`, sites);
-            for (let site of sites) {
-                site.headlines = [];
-                let item = {
-                    data: site,
-                    key: site.base_url,
-                };
-                this.storage.sites.add(item);
-            }
-            this.reloadCache();
-        });
-    }
-    ;
-    submit(submission) {
-        this.api.post(submission.url, submission.payload)
-            .then((data) => {
-            if (submission.notification !== null) {
-                submission.notification.message = data.message;
-                __WEBPACK_IMPORTED_MODULE_5__models_notification__["default"].notifyUser(submission.notification);
-            }
-            if (!data.error)
-                this.reloadCache();
-        });
-    }
-    fetchArticle(data, callback) {
-        let url = `${data.siteId}/${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.ARTICLE}${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SEARCH}`;
-        this.api.get(`${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SITE}${url}?url=${data.url}`)
-            .then((data) => {
-            let article = data;
-            __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Fetched article ${article.headline}`, article);
-            let reportCategories = [];
-            for (let item of this.storage.reportCategory.all()) {
-                reportCategories.push(item.data);
-            }
-            callback({ article: article, reportCategories: reportCategories });
-        }).catch((erro) => {
-            callback({ article: null });
-        });
-    }
-    fetchHeadlineDataForLinks(data, callback) {
-        this.api.post(`${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SEARCH}${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.HEADLINES}`, data)
-            .then((response) => {
-            callback({ info: response });
-        }).catch((erro) => {
-            callback({ article: null });
-        });
-    }
-}
-/* harmony default export */ __webpack_exports__["default"] = (Background);
-
-
-/***/ }),
-/* 39 */
+/* 34 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1103,12 +910,198 @@ class StorageType {
 
 
 /***/ }),
-/* 40 */
+/* 35 */,
+/* 36 */,
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__storage_storage__ = __webpack_require__(34);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__storage_storage__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_api__ = __webpack_require__(4);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_debug__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__contextMenu__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models_notification__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config_constants__ = __webpack_require__(2);
+
+
+
+
+
+
+
+class Background {
+    constructor(cloud) {
+        this.storage = __WEBPACK_IMPORTED_MODULE_0__storage_storage__["default"].getInstance();
+        this.api = new __WEBPACK_IMPORTED_MODULE_2__util_api__["default"]();
+        this.notifyTabOfNewData = (site) => {
+            chrome.tabs.query({}, tabs => {
+                for (let tab of tabs) {
+                    if (tab.url.indexOf(site.base_url) > -1) {
+                        chrome.tabs.sendMessage(tab.id, Object(__WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["createMessage"])(__WEBPACK_IMPORTED_MODULE_1__config_messageTypes__["messageTypes"].SITES_UPDATED));
+                        __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info("Updating tab", tab.url);
+                    }
+                }
+            });
+        };
+        this._wordCloud = cloud;
+    }
+    init() {
+        this.contextMenu = new __WEBPACK_IMPORTED_MODULE_4__contextMenu__["default"](this._wordCloud);
+        this.loadSupportedSites();
+        // Reloads all headlines each minute
+        this.cacheReloadToken = (setInterval(this.reloadCache.bind(this), __WEBPACK_IMPORTED_MODULE_6__config_constants__["RELOAD_DELAY"]));
+    }
+    /**
+     * Reloads all the headlines for all sites
+     */
+    reloadHeadlines() {
+        for (let index = 0; index < this.storage.sites.count(); index++) {
+            this.getHeadlinesOnFrontPage(this.storage.sites.at(index).data).then(() => {
+                this.notifyTabOfNewData(this.storage.sites.at(index).data);
+            });
+        }
+    }
+    /**
+     * Reloads storage with headlines and limits
+     */
+    reloadCache() {
+        this.load(this.storage.limits, __WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.LIMIT, "key").then(() => this.reloadHeadlines());
+        this.load(this.storage.reportCategory, __WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.REPORT_CATEGORY, "category").then(() => this.contextMenu.reload());
+    }
+    load(storage, apiCall, key) {
+        return this.api.get(apiCall).then((elements) => {
+            for (let elm of elements) {
+                let l = storage.get(elm[key.toString()].toString());
+                let item = {
+                    key: elm[key.toString()].toString(),
+                    data: elm
+                };
+                if (l === null) {
+                    storage.add(item);
+                }
+                else {
+                    storage.update(item);
+                }
+            }
+            __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Fetched ${elements.length} from ${apiCall}`, elements);
+        });
+    }
+    /**
+     * Checks if a site is supported
+     * If so, it returns all the current headlines objects
+     * @param url
+     * @param callback function to execute with the data from api
+     */
+    siteIsSupported(url, callback) {
+        let sites = [];
+        if (this.storage.sites.exists(url)) {
+            sites = [this.storage.sites.get(url)];
+        }
+        else {
+            sites = this.storage.sites.all();
+        }
+        let data = {
+            sites: sites,
+            limits: this.storage.limits.all()
+        };
+        return callback(data);
+    }
+    /**
+     * Fetches all headlines for a site
+     * @param site
+     * @returns {Promise<void>}
+     */
+    getHeadlinesOnFrontPage(site) {
+        return new Promise((resolve, reject) => {
+            this.api
+                .get(`${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SITE}${site.id}/${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.HEADLINE}`)
+                .then((headlines) => {
+                __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Downloaded ${headlines.length} Headlines downloaded for ${site.name}`, headlines);
+                let item = this.storage.sites.get(site.base_url);
+                if (item !== null) {
+                    item.data.headlines = headlines;
+                    this.storage.sites.update(item);
+                }
+                resolve();
+            })
+                .catch(error => {
+                __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].error(error);
+                reject();
+            });
+        });
+    }
+    /**
+     * Fetches all the supported sites, then their headlines
+     */
+    loadSupportedSites() {
+        this.api.get(__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SITE).then(data => {
+            let sites = data;
+            __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Fetched ${sites.length} sites`, sites);
+            for (let site of sites) {
+                site.headlines = [];
+                let item = {
+                    data: site,
+                    key: site.base_url
+                };
+                this.storage.sites.add(item);
+            }
+            this.reloadCache();
+        });
+    }
+    submit(submission) {
+        this.api.post(submission.url, submission.payload).then(data => {
+            if (submission.notification !== null) {
+                submission.notification.message = data.message;
+                __WEBPACK_IMPORTED_MODULE_5__models_notification__["default"].notifyUser(submission.notification);
+            }
+            if (!data.error)
+                this.reloadCache();
+        });
+    }
+    fetchArticle(data, callback) {
+        let url = `${data.siteId}/${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.ARTICLE}${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SEARCH}`;
+        this.api
+            .get(`${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SITE}${url}?url=${data.url}`)
+            .then(data => {
+            let article = data;
+            __WEBPACK_IMPORTED_MODULE_3__util_debug__["default"].info(`Fetched article ${article.headline}`, article);
+            let reportCategories = [];
+            for (let item of this.storage.reportCategory.all()) {
+                reportCategories.push(item.data);
+            }
+            callback({ article: article, reportCategories: reportCategories });
+        })
+            .catch(erro => {
+            callback({ article: null });
+        });
+    }
+    fetchHeadlineDataForLinks(data, callback) {
+        this.api
+            .post(`${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.SEARCH}${__WEBPACK_IMPORTED_MODULE_2__util_api__["default"].endpoints.HEADLINES}`, data)
+            .then(response => {
+            callback({ info: response });
+        })
+            .catch(erro => {
+            callback({ article: null });
+        });
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (Background);
+
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__storage_storage__ = __webpack_require__(33);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_notification__ = __webpack_require__(8);
@@ -1153,7 +1146,7 @@ class ContextMenu {
 
 
 /***/ }),
-/* 41 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1161,7 +1154,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_api__ = __webpack_require__(4);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_util__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_messageTypes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_constants__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_constants__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__models_notification__ = __webpack_require__(8);
 
 
@@ -1216,8 +1209,6 @@ class Wordcloud {
 
 
 /***/ }),
-/* 42 */,
-/* 43 */,
 /* 44 */,
 /* 45 */,
 /* 46 */,
@@ -1225,10 +1216,14 @@ class Wordcloud {
 /* 48 */,
 /* 49 */,
 /* 50 */,
-/* 51 */
+/* 51 */,
+/* 52 */,
+/* 53 */,
+/* 54 */,
+/* 55 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
+__webpack_require__(2);
 __webpack_require__(3);
 __webpack_require__(10);
 __webpack_require__(12);
@@ -1256,29 +1251,29 @@ __webpack_require__(9);
 __webpack_require__(30);
 __webpack_require__(31);
 __webpack_require__(4);
-__webpack_require__(2);
+__webpack_require__(1);
 __webpack_require__(0);
-__webpack_require__(38);
-__webpack_require__(40);
-__webpack_require__(52);
-__webpack_require__(34);
-__webpack_require__(53);
-__webpack_require__(39);
 __webpack_require__(41);
-module.exports = __webpack_require__(54);
+__webpack_require__(42);
+__webpack_require__(56);
+__webpack_require__(33);
+__webpack_require__(57);
+__webpack_require__(34);
+__webpack_require__(43);
+module.exports = __webpack_require__(58);
 
 
 /***/ }),
-/* 52 */
+/* 56 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__background__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__background__ = __webpack_require__(41);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_debug__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_debug__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_notification__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__wordcloud__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__wordcloud__ = __webpack_require__(43);
 
 
 
@@ -1301,7 +1296,6 @@ chrome.runtime.onConnect.addListener(function (port) {
         // other message handling
         __WEBPACK_IMPORTED_MODULE_2__util_debug__["default"].info("something else lol");
     };
-    port.postMessage('f yeah');
     // Listen to messages sent from the DevTools page
     // @ts-ignore
     port.onMessage.addListener(extensionListener);
@@ -1354,7 +1348,10 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
                     __WEBPACK_IMPORTED_MODULE_2__util_debug__["default"].info("gets here");
                     let tabId = sender.tab.id;
                     if (tabId in connections) {
-                        __WEBPACK_IMPORTED_MODULE_2__util_debug__["default"].info("Sending message to the dev tool " + request.data + "to tab id " + tabId);
+                        __WEBPACK_IMPORTED_MODULE_2__util_debug__["default"].info("Sending message to the dev tool " +
+                            request.data +
+                            "to tab id " +
+                            tabId);
                         connections[tabId].postMessage(request.data);
                     }
                     else {
@@ -1372,13 +1369,13 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
 
 
 /***/ }),
-/* 53 */
+/* 57 */
 /***/ (function(module, exports) {
 
 
 
 /***/ }),
-/* 54 */
+/* 58 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

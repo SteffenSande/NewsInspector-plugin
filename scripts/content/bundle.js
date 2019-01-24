@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 55);
+/******/ 	return __webpack_require__(__webpack_require__.s = 59);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -305,6 +305,29 @@ function find_headline_id(headlineUrl, urlTemplates) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+class Log {
+    static debug(...log) {
+        console.log("Debug", log);
+    }
+    static info(...log) {
+        console.log("Info", log);
+    }
+    static error(...log) {
+        console.log("Error", arguments);
+    }
+    static warning(...log) {
+        console.log("Warning", arguments);
+    }
+}
+/* harmony default export */ __webpack_exports__["default"] = (Log);
+
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 const ID = {
     NOTIFICATION: {
         REPORT_LINK: "reportNotificationId"
@@ -340,29 +363,6 @@ const MINUTE = 1000 * 60;
 const RELOAD_DELAY = 10 * MINUTE;
 /* harmony export (immutable) */ __webpack_exports__["RELOAD_DELAY"] = RELOAD_DELAY;
 
-
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-class Log {
-    static debug(...log) {
-        console.log("Debug", log);
-    }
-    static info(...log) {
-        console.log("Info", log);
-    }
-    static error(...log) {
-        console.log("Error", arguments);
-    }
-    static warning(...log) {
-        console.log("Warning", arguments);
-    }
-}
-/* harmony default export */ __webpack_exports__["default"] = (Log);
 
 
 /***/ }),
@@ -405,7 +405,7 @@ function createMessage(type, data = {}) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_debug__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_debug__ = __webpack_require__(1);
 
 class Api {
     constructor() {
@@ -422,10 +422,10 @@ class Api {
     get(endpoint) {
         return new Promise((resolve, reject) => {
             fetch(`${this._apiBase}${endpoint}`)
-                .then((response) => {
+                .then(response => {
                 resolve(response.json());
             })
-                .catch((error) => {
+                .catch(error => {
                 __WEBPACK_IMPORTED_MODULE_0__util_debug__["default"].error(`Could not get ${endpoint}`, error);
                 reject();
             });
@@ -435,7 +435,7 @@ class Api {
         return new Promise((resolve, reject) => {
             fetch(`${endpoint}`)
                 .then(response => resolve(response.blob()))
-                .catch((error) => {
+                .catch(error => {
                 __WEBPACK_IMPORTED_MODULE_0__util_debug__["default"].error(`Could not get ${endpoint}`, error);
                 reject();
             });
@@ -443,14 +443,14 @@ class Api {
     }
     post(endpoint, payload) {
         return fetch(`${this._apiBase}${endpoint}`, this.post_data(payload))
-            .then((response) => {
+            .then(response => {
             return response.json();
         })
-            .catch((error) => {
+            .catch(error => {
             __WEBPACK_IMPORTED_MODULE_0__util_debug__["default"].error(`Could post ${endpoint}`, error);
         });
     }
-    post_data(payload, header = 'application/x-www-form-urlencoded') {
+    post_data(payload, header = "application/x-www-form-urlencoded") {
         let formBody = "";
         for (let property in payload) {
             let encodedKey = encodeURIComponent(property);
@@ -458,27 +458,24 @@ class Api {
             formBody += encodedKey + "=" + encodedValue + "&";
         }
         return {
-            method: 'POST',
-            headers: [
-                ['Accept', 'application/json'],
-                ['Content-Type', header]
-            ],
+            method: "POST",
+            headers: [["Accept", "application/json"], ["Content-Type", header]],
             body: formBody
         };
     }
 }
 Api.endpoints = {
-    REPORT: 'submission/headline/report/',
-    SITE: 'site/',
-    ARTICLE: 'article/',
-    HEADLINE: 'headline/',
-    REPORT_CATEGORY: 'submission/category/',
-    LIMIT: 'limit/',
+    REPORT: "submission/headline/report/",
+    SITE: "site/",
+    ARTICLE: "article/",
+    HEADLINE: "headline/",
+    REPORT_CATEGORY: "submission/category/",
+    LIMIT: "limit/",
     WORDCLOUD_GENERATOR_SITE: "wordcloud_generator/site/",
     WORDCLOUD_GENERATOR_ARTICLE: "wordcloud_generator/article/",
-    SUBMIT_SUMMARY: 'submission/headline/summary/',
-    SEARCH: 'search/',
-    HEADLINES: 'headlines/'
+    SUBMIT_SUMMARY: "submission/headline/summary/",
+    SEARCH: "search/",
+    HEADLINES: "headlines/"
 };
 /* harmony default export */ __webpack_exports__["default"] = (Api);
 
@@ -832,15 +829,16 @@ var ReportCategory;
 
 
 /***/ }),
-/* 32 */
+/* 32 */,
+/* 33 */,
+/* 34 */,
+/* 35 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_util__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_debug__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_constants__ = __webpack_require__(1);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(2);
 
 
 class BaseOverlay {
@@ -849,15 +847,14 @@ class BaseOverlay {
         this._templateName = "";
         this._contentNode = null;
         this._element = null;
-        this._rootElementName = `${__WEBPACK_IMPORTED_MODULE_2__config_constants__["CLASS_PREFIX"]}${rootElm}`;
+        this._rootElementName = `${__WEBPACK_IMPORTED_MODULE_1__config_constants__["CLASS_PREFIX"]}${rootElm}`;
         this._templateClass = `.${this._rootElementName}`;
     }
     /**
      * Loads all templates
      */
     init() {
-        Object(__WEBPACK_IMPORTED_MODULE_0__util_util__["getHtmlTemplate"])(this._templateName, this._templateClass)
-            .then((html) => {
+        Object(__WEBPACK_IMPORTED_MODULE_0__util_util__["getHtmlTemplate"])(this._templateName, this._templateClass).then((html) => {
             this.onTemplateLoaded(html);
         });
     }
@@ -868,26 +865,12 @@ class BaseOverlay {
         }
         this._element = html;
         let node = this._element;
-        // Here is the place that adds information about the article to the page in the form of an overlay.
-        // This is clearly where i should instead hook it up to the developer tool page!
-        // The probem is that i cannot send messages between the background and the dev tools yet, but the information is sendt to the bakground
-        __WEBPACK_IMPORTED_MODULE_1__util_debug__["default"].info("I will log that the child node should have been created and that the information will follow:");
-        this._element.onmouseout = () => this.isHoveringOverlay = false;
+        document.body.appendChild(node);
+        this._element.onmouseover = () => (this.isHoveringOverlay = true);
+        this._element.onmouseout = () => (this.isHoveringOverlay = false);
+        // Here the element is created, but this implementation is very steadfast on using the current templates and code.
+        // I might just rewrite this cause it will be simpler and i can write better code.
     }
-    /**
-     * Updates the content of the overlay based on the article category;
-     Log.info(this._element.innerText);
-     chrome.runtime.sendMessage(createMessage(messageTypes.NOTIFY_DEV, this._element));
-     document.body.appendChild(node);
-
-
-
-
-
-
-     this._element.onmouseover = () => this.isHoveringOverlay = true;
-     * @param data
-     */
     updateContent(data) { }
     show() {
         this._element.style.display = "block";
@@ -903,7 +886,7 @@ class BaseOverlay {
 
 
 /***/ }),
-/* 33 */
+/* 36 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -999,14 +982,13 @@ Modal._instance = new Modal();
 
 
 /***/ }),
-/* 34 */,
-/* 35 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseOverlay__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseOverlay__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(2);
 
 
 class BaseModeOverlay extends __WEBPACK_IMPORTED_MODULE_0__baseOverlay__["default"] {
@@ -1036,13 +1018,15 @@ class BaseModeOverlay extends __WEBPACK_IMPORTED_MODULE_0__baseOverlay__["defaul
 
 
 /***/ }),
-/* 36 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_util__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_debug__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_constants__ = __webpack_require__(2);
+
 
 
 class BaseInjector {
@@ -1051,7 +1035,7 @@ class BaseInjector {
         this._limits = [];
         this._sites = [];
         this._templateName = "";
-        this._rootElementName = `${__WEBPACK_IMPORTED_MODULE_1__config_constants__["CLASS_PREFIX"]}${rootElm}`;
+        this._rootElementName = `${__WEBPACK_IMPORTED_MODULE_2__config_constants__["CLASS_PREFIX"]}${rootElm}`;
         this._templateClass = `.${this._rootElementName}`;
     }
     init(data) {
@@ -1059,12 +1043,10 @@ class BaseInjector {
         if (data == null)
             return;
         this.setValuesFromData(data);
-        Object(__WEBPACK_IMPORTED_MODULE_0__util_util__["getHtmlTemplate"])(this._templateName, this._templateClass)
-            .then((html) => {
+        Object(__WEBPACK_IMPORTED_MODULE_0__util_util__["getHtmlTemplate"])(this._templateName, this._templateClass).then((html) => {
             this.onTemplateLoaded(html);
         });
     }
-    ;
     update(data) {
         this.setValuesFromData(data);
     }
@@ -1072,10 +1054,16 @@ class BaseInjector {
         this.inject();
     }
     setValuesFromData(data) {
+        // Here is all i need to send the data to the dev tools panel
+        // log data and send to the background script
+        __WEBPACK_IMPORTED_MODULE_1__util_debug__["default"].info(data);
+        // chrome.runtime.sendMessage(data);
         if (typeof data.sites !== "undefined")
             this._sites = data.sites.map((item, index) => item.data);
         if (typeof data.limits !== "undefined")
-            this._limits = data.limits.map((item, index) => item.data).sort((a, b) => a.value - b.value);
+            this._limits = data.limits
+                .map((item, index) => item.data)
+                .sort((a, b) => a.value - b.value);
     }
     clear() { }
     inject() {
@@ -1086,15 +1074,15 @@ class BaseInjector {
 
 
 /***/ }),
-/* 37 */
+/* 39 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_limit__ = __webpack_require__(5);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__baseInjector__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__baseInjector__ = __webpack_require__(38);
 
 
 
@@ -1202,25 +1190,25 @@ class HeadlineInjector extends __WEBPACK_IMPORTED_MODULE_3__baseInjector__["defa
 
 
 /***/ }),
-/* 38 */,
-/* 39 */,
 /* 40 */,
 /* 41 */,
-/* 42 */
+/* 42 */,
+/* 43 */,
+/* 44 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_debug__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseInjector__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__util_debug__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseInjector__ = __webpack_require__(38);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__overlay__ = __webpack_require__(43);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_constants__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__overlay__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_constants__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config_messageTypes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modal__ = __webpack_require__(33);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__revision_mode__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__modal__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__revision_mode__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__models_submission__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__report__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__report__ = __webpack_require__(47);
 
 
 
@@ -1354,13 +1342,13 @@ class ArticleInjector extends __WEBPACK_IMPORTED_MODULE_1__baseInjector__["defau
 
 
 /***/ }),
-/* 43 */
+/* 45 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseOverlay__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__baseOverlay__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(2);
 
 
 class ArticleOverlay extends __WEBPACK_IMPORTED_MODULE_0__baseOverlay__["default"] {
@@ -1377,13 +1365,13 @@ class ArticleOverlay extends __WEBPACK_IMPORTED_MODULE_0__baseOverlay__["default
 
 
 /***/ }),
-/* 44 */
+/* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_constants__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseMode__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_constants__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseMode__ = __webpack_require__(37);
 
 
 class RevisionModeOverlay extends __WEBPACK_IMPORTED_MODULE_1__baseMode__["default"] {
@@ -1447,16 +1435,16 @@ class RevisionModeOverlay extends __WEBPACK_IMPORTED_MODULE_1__baseMode__["defau
 
 
 /***/ }),
-/* 45 */
+/* 47 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_constants__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseMode__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__config_constants__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__baseMode__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__models_submission__ = __webpack_require__(9);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__modal__ = __webpack_require__(36);
 
 
 
@@ -1500,7 +1488,7 @@ class ReportModeOverlay extends __WEBPACK_IMPORTED_MODULE_1__baseMode__["default
 
 
 /***/ }),
-/* 46 */
+/* 48 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1548,13 +1536,13 @@ class FindAttributeOnElementInHtmlTree {
 
 
 /***/ }),
-/* 47 */
+/* 49 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__injector__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_debug__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__injector__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_debug__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__util_util__ = __webpack_require__(0);
 
 
@@ -1639,13 +1627,13 @@ class FrontpageInjector extends __WEBPACK_IMPORTED_MODULE_0__injector__["default
 
 
 /***/ }),
-/* 48 */
+/* 50 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__injector__ = __webpack_require__(37);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_debug__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__injector__ = __webpack_require__(39);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util_debug__ = __webpack_require__(1);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_messageTypes__ = __webpack_require__(3);
 
 
@@ -1694,15 +1682,15 @@ class LinkInjector extends __WEBPACK_IMPORTED_MODULE_0__injector__["default"] {
 
 
 /***/ }),
-/* 49 */
+/* 51 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__models_headline__ = __webpack_require__(11);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_constants__ = __webpack_require__(2);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__models_article__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__baseOverlay__ = __webpack_require__(32);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__baseOverlay__ = __webpack_require__(35);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__util_util__ = __webpack_require__(0);
 
 
@@ -1929,15 +1917,17 @@ class HeadlineOverlay extends __WEBPACK_IMPORTED_MODULE_3__baseOverlay__["defaul
 
 
 /***/ }),
-/* 50 */,
-/* 51 */,
 /* 52 */,
 /* 53 */,
 /* 54 */,
-/* 55 */
+/* 55 */,
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(1);
+__webpack_require__(2);
 __webpack_require__(3);
 __webpack_require__(10);
 __webpack_require__(12);
@@ -1965,26 +1955,22 @@ __webpack_require__(9);
 __webpack_require__(30);
 __webpack_require__(31);
 __webpack_require__(4);
-__webpack_require__(2);
+__webpack_require__(1);
 __webpack_require__(0);
-__webpack_require__(35);
-__webpack_require__(42);
-__webpack_require__(43);
-__webpack_require__(45);
-__webpack_require__(44);
-__webpack_require__(36);
-__webpack_require__(32);
-__webpack_require__(46);
-__webpack_require__(47);
 __webpack_require__(37);
+__webpack_require__(44);
+__webpack_require__(45);
+__webpack_require__(47);
+__webpack_require__(46);
+__webpack_require__(38);
+__webpack_require__(35);
 __webpack_require__(48);
 __webpack_require__(49);
-__webpack_require__(56);
-__webpack_require__(33);
-__webpack_require__(57);
-__webpack_require__(58);
-__webpack_require__(59);
+__webpack_require__(39);
+__webpack_require__(50);
+__webpack_require__(51);
 __webpack_require__(60);
+__webpack_require__(36);
 __webpack_require__(61);
 __webpack_require__(62);
 __webpack_require__(63);
@@ -1992,24 +1978,28 @@ __webpack_require__(64);
 __webpack_require__(65);
 __webpack_require__(66);
 __webpack_require__(67);
-module.exports = __webpack_require__(68);
+__webpack_require__(68);
+__webpack_require__(69);
+__webpack_require__(70);
+__webpack_require__(71);
+module.exports = __webpack_require__(72);
 
 
 /***/ }),
-/* 56 */
+/* 60 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal__ = __webpack_require__(33);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__modal__ = __webpack_require__(36);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__config_messageTypes__ = __webpack_require__(3);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__headline_front_page_injector__ = __webpack_require__(47);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_debug__ = __webpack_require__(2);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__headline_link_injector__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__headline_front_page_injector__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__util_debug__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__headline_link_injector__ = __webpack_require__(50);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__util_util__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__article_injector__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__contextMenuListener__ = __webpack_require__(46);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__headline_overlay__ = __webpack_require__(49);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__article_injector__ = __webpack_require__(44);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__contextMenuListener__ = __webpack_require__(48);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__headline_overlay__ = __webpack_require__(51);
 
 
 
@@ -2078,30 +2068,6 @@ window.addEventListener('contextmenu', (e) => {
 
 
 /***/ }),
-/* 57 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 58 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 59 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 60 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
 /* 61 */
 /***/ (function(module, exports) {
 
@@ -2145,6 +2111,30 @@ window.addEventListener('contextmenu', (e) => {
 
 /***/ }),
 /* 68 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 69 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 70 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 71 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 72 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
