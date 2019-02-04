@@ -1,4 +1,3 @@
-import Log from "../util/debug";
 import Storage from "./storage/storage";
 import {createMessage, messageTypes} from "../config/messageTypes";
 import {createSubmissionForm} from "../util/util";

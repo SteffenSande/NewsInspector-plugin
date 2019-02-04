@@ -1,28 +1,28 @@
 import Storage from "./storage/storage";
 import StorageItem from "./storage/storageItem";
-import { createMessage, messageTypes } from "../config/messageTypes";
-import Api from "../util/api";
-import Log from "../util/debug";
-import { INewsSite } from "../models/newsSite";
-import { IHeadline } from "../models/headline";
-import { ILimit } from "../models/limit";
-import { ReportCategory } from "../models/reportCategory";
-import StorageType from "./storage/storageType";
 import IStorageItem from "./storage/storageItem";
+import {createMessage, messageTypes} from "../config/messageTypes";
+import * as Api from "../util/api";
+import Log from "../util/debug";
+import {INewsSite} from "../models/newsSite";
+import {ILimit} from "../models/limit";
+import {ReportCategory} from "../models/reportCategory";
+import StorageType from "./storage/storageType";
 import ContextMenu from "./contextMenu";
-import { ISubmission } from "../models/submission";
+import {ISubmission} from "../models/submission";
 import Notification from "../models/notification";
-import { ITabData } from "../models/tabData";
-import { IArticle } from "../models/article";
-import { RELOAD_DELAY } from "../config/constants";
+import {ITabData} from "../models/tabData";
+import {IArticle} from "../models/article";
+import {RELOAD_DELAY} from "../config/constants";
 import Wordcloud from "./wordcloud";
+import {EndPoints} from "../util/enums";
+import {headline} from "../models/headline";
 
 class Background {
-  private storage: Storage = Storage.getInstance();
   public contextMenu: ContextMenu;
-  private api: Api = new Api();
+  private storage: Storage = Storage.getInstance();
   private cacheReloadToken: number;
-  private _wordCloud: Wordcloud;
+  private _wordCloud: Wordcloud = null;
 
   constructor(cloud: Wordcloud) {
     this._wordCloud = cloud;
@@ -69,22 +69,22 @@ class Background {
    * Reloads storage with headlines and limits
    */
   reloadCache() {
-    this.load<ILimit>(this.storage.limits, Api.endpoints.LIMIT, "key").then(
+    this.load<ILimit>(this.storage.limits, EndPoints.LIMIT, "key").then(
       () => this.reloadHeadlines()
     );
     this.load<ReportCategory>(
       this.storage.reportCategory,
-      Api.endpoints.REPORT_CATEGORY,
+        EndPoints.REPORT_CATEGORY,
       "category"
     ).then(() => this.contextMenu.reload());
   }
 
   load<T>(storage: StorageType, apiCall: string, key: string): Promise<void> {
-    return this.api.get(apiCall).then((elements: T[]) => {
+    return Api.get(apiCall).then((elements: T[]) => {
       for (let elm of elements) {
-        let l = storage.get(elm[key.toString()].toString());
+        let l = storage.get(elm[key].toString());
         let item: IStorageItem = {
-          key: elm[key.toString()].toString(),
+          key: elm[key].toString(),
           data: elm
         };
         if (l === null) {
@@ -127,10 +127,11 @@ class Background {
    * @returns {Promise<void>}
    */
   getHeadlinesOnFrontPage(site: INewsSite): Promise<void> {
+    // @ts-ignore
     return new Promise((resolve, reject) => {
-      this.api
-        .get(`${Api.endpoints.SITE}${site.id}/${Api.endpoints.HEADLINE}`)
-        .then((headlines: IHeadline[]) => {
+        Api
+        .get(`${EndPoints.SITE}${site.id}/${EndPoints.HEADLINE}`)
+        .then((headlines: headline[]) => {
           Log.info(
             `Downloaded ${headlines.length} Headlines downloaded for ${
               site.name
@@ -155,7 +156,7 @@ class Background {
    * Fetches all the supported sites, then their headlines
    */
   loadSupportedSites() {
-    this.api.get(Api.endpoints.SITE).then(data => {
+    Api.get(EndPoints.SITE).then(data => {
       let sites: INewsSite[] = <INewsSite[]>data;
       Log.info(`Fetched ${sites.length} sites`, sites);
       for (let site of sites) {
@@ -171,7 +172,7 @@ class Background {
   }
 
   submit(submission: ISubmission) {
-    this.api.post(submission.url, submission.payload).then(data => {
+    Api.post(submission.url, submission.payload).then(data => {
       if (submission.notification !== null) {
         submission.notification.message = data.message;
         Notification.notifyUser(submission.notification);
@@ -182,9 +183,9 @@ class Background {
   }
 
   fetchArticle(data, callback) {
-    let url = `${data.siteId}/${Api.endpoints.ARTICLE}${Api.endpoints.SEARCH}`;
-    this.api
-      .get(`${Api.endpoints.SITE}${url}?url=${data.url}`)
+    let url = `${data.siteId}/${EndPoints.ARTICLE}${EndPoints.SEARCH}`;
+      Api
+      .get(`${EndPoints.SITE}${url}?url=${data.url}`)
       .then(data => {
         let article: IArticle = <IArticle>data;
         Log.info(`Fetched article ${article.headline}`, article);
@@ -202,8 +203,8 @@ class Background {
   }
 
   fetchHeadlineDataForLinks(data, callback) {
-    this.api
-      .post(`${Api.endpoints.SEARCH}${Api.endpoints.HEADLINES}`, data)
+      Api
+      .post(`${EndPoints.SEARCH}${EndPoints.HEADLINES}`, data)
       .then(response => {
         callback({ info: response });
       })

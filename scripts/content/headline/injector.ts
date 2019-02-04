@@ -1,4 +1,4 @@
-import {IHeadline} from "../../models/headline";
+import {headline} from "../../models/headline";
 import { Limits} from "../../models/limit";
 import {CLASS_PREFIX, HTML_FILES} from "../../config/constants";
 import {getNearestLimitWithValue} from "../../util/util";
@@ -9,14 +9,14 @@ import {ITabData} from "../../models/tabData";
 import Log from "../../util/debug";
 
 class HeadlineInjector extends BaseInjector {
-    protected _headlines: Map<number, IHeadline>;
+    protected _headlines: Map<number, headline>;
     protected _markTemplate: HTMLElement;
     protected _isInsideHeadline: boolean;
-    protected _currentHeadline: IHeadline;
+    protected _currentHeadline: headline;
 
     constructor(overlay: HeadlineOverlay) {
         super("-headline");
-        this._headlines = new Map<number, IHeadline>();
+        this._headlines = new Map<number, headline>();
         this._isInsideHeadline = false;
         this._templateName = HTML_FILES.templates.headline;
         this._overlay = overlay;
@@ -69,7 +69,7 @@ class HeadlineInjector extends BaseInjector {
         }
     };
 
-    injectIntoNode(node: HTMLElement, data: IHeadline) {
+    injectIntoNode(node: HTMLElement, data: headline) {
         let id = parseInt(data.id.toString());
 
         let marking = this.createMarking(node, id);
@@ -125,7 +125,7 @@ class HeadlineInjector extends BaseInjector {
             this.injectIntoNode(elm, data);
         }
     }
-    getDataForNode(elm: HTMLLinkElement): IHeadline {return null;}
+    getDataForNode(elm: HTMLLinkElement): headline {return null;}
 
 
     findAllNodes = (): NodeList => {

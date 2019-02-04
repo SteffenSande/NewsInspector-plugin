@@ -1,5 +1,5 @@
 import BaseOverlay from "../baseOverlay";
-import {CLASS_PREFIX, HTML_FILES} from "../../config/constants";
+import {HTML_FILES} from "../../config/constants";
 import Log from "../../util/debug";
 import {INewsSite} from "../../models/newsSite";
 import {IArticle} from "../../models/article";

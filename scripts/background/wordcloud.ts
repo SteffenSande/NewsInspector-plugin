@@ -1,20 +1,16 @@
-import Api from "../util/api";
+import * as Api from "../util/api";
 import {getHtmlTemplate, imageToBase64} from "../util/util";
 import {createMessage, messageTypes} from "../config/messageTypes";
-import Log from "../util/debug";
 import Tab = chrome.tabs.Tab;
 import {HTML_FILES} from "../config/constants";
 import Notification from "../models/notification";
-import {ITabData} from "../models/tabData";
+import {EndPoints} from "../util/enums";
 
 class Wordcloud {
-    private _api: Api = new Api();
-
     private _classPrefix = ".news-enhancer-wordcloud";
-
     showWordCloudForId(id: number, tab: Tab) {
 
-        this._api.get(`${Api.endpoints.WORDCLOUD_GENERATOR_ARTICLE}${id}`)
+        Api.get(`${EndPoints.WORDCLOUD_GENERATOR_ARTICLE}${id}`)
             .then((data) => {
                 if (typeof data.error === "undefined")
                     this.showWordCloudForLink({word_cloud_link: data.link, tab: tab});
@@ -28,11 +24,11 @@ class Wordcloud {
     }
 
     showWordCloudForLink(data) {
-        let link = `${this._api.BaseUrl}${data.word_cloud_link}`;
+        let link = `${Api.BaseUrl}${data.word_cloud_link}`;
         if (data.word_cloud_link.startsWith("/"))
-            link = `${this._api.BaseUrl}${data.word_cloud_link.substring(1, data.word_cloud_link.length)}`;
+            link = `${Api.BaseUrl}${data.word_cloud_link.substring(1, data.word_cloud_link.length)}`;
 
-        this._api.image(link)
+        Api.image(link)
             .then((imageData) => {
                 imageToBase64(imageData)
                     .then((img: string) => {
@@ -58,7 +54,5 @@ class Wordcloud {
             });
     }
 }
-
-
 
 export default Wordcloud;

@@ -1,4 +1,4 @@
-import { getHtmlTemplate } from "../util/util";
+import { getHtmlTemplate } from '../util/util';
 import Log from "../util/debug";
 import { CLASS_PREFIX } from "../config/constants";
 import { createConnection } from "net";

@@ -1,16 +1,18 @@
 class Log {
-    static debug(...log) {
-        console.log("Debug",log);
-    }
-    static info(...log) {
-        console.log("Info",log);
-    }
-    static error(...log) {
-        console.log("Error", arguments);
-    }
-    static warning(...log) {
-        console.log("Warning", arguments);
-    }
-}
+  public static debug(...log: any[]): void {
+    console.log("Debug", log);
+  }
 
+  public static info(...log: any[]): void {
+    console.log("Info", log);
+  }
+
+  public static error(...log: any[]): void {
+    console.log("Error", arguments);
+  }
+
+  public static warning(...log: any[]): void {
+    console.log("Warning", arguments);
+  }
+}
 export default Log;

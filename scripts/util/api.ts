@@ -1,83 +1,69 @@
+import {ServerLocation} from "./enums";
 import Log from "../util/debug";
 
-class Api {
-  private _prod: string = "http://165.227.136.59/";
-  private _dev: string = "http://localhost:8000/";
+export let BaseUrl: string = ServerLocation.DEV;
+let apiBase: string = `${BaseUrl}api/`;
 
-  public BaseUrl: string = this._prod;
-
-  private _apiBase: string = `${this.BaseUrl}api/`;
-
-  public static endpoints = {
-    REPORT: "submission/headline/report/",
-    SITE: "site/",
-    ARTICLE: "article/",
-    HEADLINE: "headline/",
-    REPORT_CATEGORY: "submission/category/",
-    LIMIT: "limit/",
-    WORDCLOUD_GENERATOR_SITE: "wordcloud_generator/site/",
-    WORDCLOUD_GENERATOR_ARTICLE: "wordcloud_generator/article/",
-    SUBMIT_SUMMARY: "submission/headline/summary/",
-    SEARCH: "search/",
-    HEADLINES: "headlines/"
-  };
-
-  /**
-   * Fetch data from endpoint and converts it to json
-   * @param endpoint
-   * @returns {Promise<T>}
-   */
-  public get(endpoint: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      fetch(`${this._apiBase}${endpoint}`)
+/**
+ * Fetch data from endpoint and converts it to json
+ * @param endpoint
+ * @returns {Promise<T>}
+ */
+export function get(endpoint: string): Promise<any> {
+  // @ts-ignore
+  return new Promise((resolve, reject) => {
+    fetch(apiBase + endpoint)
         .then(response => {
           resolve(response.json());
         })
         .catch(error => {
-          Log.error(`Could not get ${endpoint}`, error);
+          Log.error(`Could not get ${endpoint}`);
+          Log.error(error);
           reject();
         });
-    });
-  }
+  });
+}
 
-  public image(endpoint: string): Promise<any> {
-    return new Promise((resolve, reject) => {
-      fetch(`${endpoint}`)
+export function image(endpoint: string): Promise<any> {
+  // @ts-ignore
+  return new Promise((resolve, reject) => {
+    fetch(`${endpoint}`)
         .then(response => resolve(response.blob()))
         .catch(error => {
-          Log.error(`Could not get ${endpoint}`, error);
+          Log.error(`Could not get ${endpoint}`);
+          Log.error(error);
           reject();
         });
-    });
-  }
+  });
+}
 
-  public post(endpoint: string, payload: any): Promise<any> {
-    return fetch(`${this._apiBase}${endpoint}`, this.post_data(payload))
+export function post(endpoint: string, payload: any): Promise<any> {
+  return fetch(`${apiBase}${endpoint}`, post_data(payload))
       .then(response => {
         return response.json();
       })
       .catch(error => {
-        Log.error(`Could post ${endpoint}`, error);
+        Log.error(`Could post ${endpoint}`);
+        Log.error(error)
       });
-  }
-
-  private post_data(
-    payload,
-    header = "application/x-www-form-urlencoded"
-  ): RequestInit {
-    let formBody = "";
-    for (let property in payload) {
-      let encodedKey = encodeURIComponent(property);
-      let encodedValue = encodeURIComponent(payload[property]);
-      formBody += encodedKey + "=" + encodedValue + "&";
-    }
-
-    return {
-      method: "POST",
-      headers: [["Accept", "application/json"], ["Content-Type", header]],
-      body: formBody
-    };
-  }
 }
 
-export default Api;
+export function post_data(
+    payload: any,
+    header = "application/x-www-form-urlencoded"
+): RequestInit {
+  let formBody = "";
+  for (const property in payload) {
+    if (payload.hasOwnProperty(property)) {
+      const encodedKey = encodeURIComponent(property);
+      const encodedValue = encodeURIComponent(payload[property]);
+      formBody += encodedKey + "=" + encodedValue + "&";
+    }
+  }
+
+  return {
+    body: formBody,
+    headers: [["Accept", "application/json"], ["Content-Type", header]],
+    method: "POST"
+  };
+}

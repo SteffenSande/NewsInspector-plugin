@@ -1,6 +1,6 @@
 import {INotification} from "./notification";
 import {IReportCategory} from "./reportCategory";
-import Api from "../util/api";
+import {EndPoints} from "../util/enums";
 
 export interface ISubmission {
     formId: string,
@@ -16,7 +16,7 @@ export function createSummarySubmission(id: number) {
     };
     return  <ISubmission>{
         formId: "news-enhancer-headline-submission-form",
-        url: Api.endpoints.SUBMIT_SUMMARY,
+        url: EndPoints.SUBMIT_SUMMARY,
         notification: notification,
         payload: {headline: id}
     };
@@ -29,7 +29,7 @@ export function createReportSubmission(category: IReportCategory, id: number) {
     };
     return <ISubmission> {
         formId: "news-enhancer-headline-submission-form",
-        url: Api.endpoints.REPORT,
+        url: EndPoints.REPORT,
         notification: notification,
         payload: {id: id, category: category.id}
     };

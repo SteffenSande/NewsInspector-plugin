@@ -1,6 +1,6 @@
 import Storage from "../background/storage/storage";
 import * as ReactDOM from "react-dom";
-import React from "react";
+import * as React from "react";
 
 /**
  * Create a connection to the background script

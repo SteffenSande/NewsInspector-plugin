@@ -7,7 +7,7 @@ import {IHeadlineReport} from "./headlineReport";
 import {IHeadlineRevision} from "./headlineRevision";
 import {IHeadlineDiff} from "./headlineDiff";
 
-export interface IHeadline {
+export interface headline {
     id: number,
     news_site: number
     url: string,
@@ -32,7 +32,7 @@ class HeadlineInfo implements IHeadlineInfo {
     public category: ArticleCategory;
     private _updated: string;
     private _published: string;
-    
+
     set updated(updated: string) {
         this._updated = updated;
     }

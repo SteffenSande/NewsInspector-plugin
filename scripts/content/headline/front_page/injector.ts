@@ -1,7 +1,7 @@
 import {INewsSite} from "../../../models/newsSite";
 import HeadlineInjector from "../injector";
 import Log from "../../../util/debug";
-import {IHeadline} from "../../../models/headline";
+import {headline} from "../../../models/headline";
 import {find_headline_id, trimUrlGetParams, trimUrlToHostname, trimUrlToPath} from "../../../util/util";
 
 
@@ -38,7 +38,7 @@ class FrontpageInjector extends HeadlineInjector{
         htmlHeadline.setAttribute(`${this._rootElementName}-id`, id.toString());
     }
 
-    getDataForNode(elm: HTMLLinkElement): IHeadline {
+    getDataForNode(elm: HTMLLinkElement): headline {
         let site = this.currentSite();
         if(site === null)
             return null;
@@ -63,7 +63,7 @@ class FrontpageInjector extends HeadlineInjector{
             let elmUrl = find_headline_id(elm.href, site.urlTemplates);
             for (let headline of site.headlines) {
 
-                let headline_url = trimUrlToPath(headline.url);
+                let headline_url: string= trimUrlToPath(headline.url);
                 headline_url = trimUrlGetParams(headline_url);
 
                 if ((headline.url_id.length > 0 && headline.url_id === elmUrl) || headline_url === trimmedUrl) {
@@ -74,7 +74,7 @@ class FrontpageInjector extends HeadlineInjector{
         return null;
     }
 
-    injectIntoNode(node: HTMLElement, data: IHeadline) {
+    injectIntoNode(node: HTMLElement, data: headline) {
         super.injectIntoNode(node, data);
         this.injectHeadlineIdOnEachLink(node, data.id);
     }

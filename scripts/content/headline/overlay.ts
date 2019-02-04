@@ -1,11 +1,10 @@
-import HeadlineInfo, {IHeadline} from "../../models/headline";
+import HeadlineInfo, {headline} from "../../models/headline";
 import {HTML_FILES} from "../../config/constants";
 import {ArticleCategory} from "../../models/article";
 import BaseOverlay from "../baseOverlay";
 import {printDateTime, trimUrlGetParams, trimUrlToHostname, wordsToReadingTimeInMinutes} from "../../util/util";
 import {IHeadlineReport} from "../../models/headlineReport";
 import {IHeadlineDiff} from "../../models/headlineDiff";
-import Log from "../../util/debug";
 
 class HeadlineOverlay extends BaseOverlay {
     private _articleTemplate: HTMLElement;
@@ -16,7 +15,7 @@ class HeadlineOverlay extends BaseOverlay {
     private _reportTemplate: HTMLElement;
     private _closeButton: HTMLElement;
     private _info: HeadlineInfo;
-    private _currentHeadlineInOverlay: IHeadline;
+    private _currentHeadlineInOverlay: headline;
 
     // Revision props
     private _progress: HTMLElement;
@@ -57,7 +56,7 @@ class HeadlineOverlay extends BaseOverlay {
     /**
      * Sets the article content in the overlay
      */
-    private article(headline: IHeadline) {
+    private article(headline: headline) {
         let template = <HTMLElement>this._articleTemplate.cloneNode(true);
         this._currentHeadlineInOverlay = headline;
 
@@ -84,7 +83,7 @@ class HeadlineOverlay extends BaseOverlay {
         this.setHeadlineDiffs(template, headline);
     }
 
-    setHeadlineDiffs = (template: HTMLElement, headline: IHeadline) => {
+    setHeadlineDiffs = (template: HTMLElement, headline: headline) => {
         let diff = <HTMLElement>template.querySelector(`.${this._rootElementName}-overlay-revision-mode`);
         if (headline.diffs.length === 0) {
             diff.style.display = "none";
@@ -166,7 +165,7 @@ class HeadlineOverlay extends BaseOverlay {
     /**
      * Sets the external content in the overlay
      */
-    private external(headline: IHeadline) {
+    private external(headline: headline) {
         let template = <HTMLElement>this._externalTemplate.cloneNode(true);
         // Display location and link and header as name of the site
 
@@ -180,7 +179,7 @@ class HeadlineOverlay extends BaseOverlay {
     /**
      * Sets the feed content in the overlay
      */
-    private feed(headline: IHeadline) {
+    private feed(headline: headline) {
         let template = <HTMLElement>this._feedTemplate.cloneNode(true);
         let summary = headline.summary !== null ? headline.summary.one_line : "";
         this.showTextOrHideLine(template, 'summary', summary);
@@ -190,7 +189,7 @@ class HeadlineOverlay extends BaseOverlay {
     /**
      * Sets the video content in the overlay
      */
-    private video(headline: IHeadline) {
+    private video(headline: headline) {
         // Display location and link
 
         let template = <HTMLElement>this._videoTemplate.cloneNode(true);
@@ -202,7 +201,7 @@ class HeadlineOverlay extends BaseOverlay {
     /**
      * Sets the no info content in the overlay
      */
-    private noInfo(headline: IHeadline) {
+    private noInfo(headline: headline) {
         let template = <HTMLElement>this._noInfoTemplate.cloneNode(true);
         let summary = headline.summary !== null ? headline.summary.one_line : "";
         this.showTextOrHideLine(template, 'summary', summary);
@@ -228,7 +227,7 @@ class HeadlineOverlay extends BaseOverlay {
      * Updates the content of the overlay based on the article category
      * @param headline
      */
-    updateContent(headline: IHeadline): void {
+    updateContent(headline: headline): void {
         super.updateContent(headline);
 
         switch (headline.info.category) {

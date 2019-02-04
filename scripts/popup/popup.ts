@@ -1,7 +1,6 @@
-import Log from "../util/debug";
 import {createMessage, messageTypes} from "../config/messageTypes";
 import Tab = chrome.tabs.Tab;
-import {currentTab} from "../util/util";
+import {currentTab} from '../util/util';
 import {INewsSite} from "../models/newsSite";
 
 class Popup {

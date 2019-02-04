@@ -11,8 +11,7 @@ import {createSummarySubmission} from "../../models/submission";
 import ReportModeOverlay from "./report";
 import {IReportCategory} from "../../models/reportCategory";
 import HeadlineOverlay from "../headline/overlay";
-import {IHeadlineInfo} from "../../models/headline";
-import {IRevision} from "../../models/revision";
+import {headline} from "../../models/headline";
 
 class ArticleInjector extends BaseInjector {
 
@@ -58,7 +57,8 @@ class ArticleInjector extends BaseInjector {
     }
 
     showMetaInfo(){
-        let headline = this._sites[0].headlines.find(x => x.id === this._article.headline);
+        // @ts-ignore
+        let headline: headline = this._sites[0].headlines.find(x => x.id === this._article.headline);
         if (headline === null) {
             return;
         }

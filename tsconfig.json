@@ -1,22 +1,17 @@
 {
   "compilerOptions": {
-    "target": "es6",
-    "pretty": true,
+    "allowSyntheticDefaultImports": true,
     "jsx": "react",
+    "module": "ESNext",
     "moduleResolution": "node",
     "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "removeComments": false,
-    "noImplicitAny": false
+    "target": "es6",
+    "pretty": true
   },
-  "exclude": [
-    "node_modules",
-    "NewsEnhancer"
-  ],
   "include": [
-    "./scripts/**/*"
+    "scripts"
   ],
-  "baseUrl": "types",
-  "typeRoots": ["types"]
+  "exclude": [
+    "node_modules"
+  ]
 }

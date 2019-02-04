@@ -1,9 +1,10 @@
-import Log from "../../util/debug";
+import IStorageItem from "./storageItem";
+import {IpcSocketConnectOpts} from "net";
 
 class StorageType {
-    private storage: any[] = [];
+    private storage: IStorageItem[] = [];
 
-    public add(item: any): any {
+    public add(item: IStorageItem): void {
         this.storage.push(item);
     }
 
@@ -11,14 +12,7 @@ class StorageType {
         return this.find_index_of(key) !== -1;
     }
 
-    private find_index_of(key: string): number {
-        if (key === undefined)
-            return -1;
-
-        return this.storage.findIndex((item) => key.indexOf(item.key) !== -1 );
-    }
-
-    public get(key: string): any {
+    public get(key: string): IStorageItem {
         let index = this.find_index_of(key);
         if (index > -1) {
 
@@ -27,7 +21,7 @@ class StorageType {
         return null;
     }
 
-    public update(item: any) {
+    public update(item: IStorageItem) {
         let index = this.find_index_of(item.key);
 
         if (index > -1)
@@ -35,7 +29,6 @@ class StorageType {
     }
 
     public delete(key: string):void {
-
         let index = this.find_index_of(key);
         if (index > -1) {
             this.storage.splice(index, 1);
@@ -52,8 +45,15 @@ class StorageType {
         return this.storage[index];
     }
 
-    public all(): any[] {
+    public all(): IStorageItem[] {
         return this.storage;
+    }
+
+    private find_index_of(key: string): number {
+        if (key === undefined)
+            return -1;
+
+        return this.storage.findIndex((item) => key.indexOf(item.key) !== -1 );
     }
 }
 

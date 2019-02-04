@@ -1,31 +1,31 @@
 import HeadlineInjector from "../injector";
 import Log from "../../../util/debug";
 import {createMessage, messageTypes} from "../../../config/messageTypes";
-import {IHeadline} from "../../../models/headline";
+import {headline} from "../../../models/headline";
 import HeadlineOverlay from "../overlay";
 
 
 class LinkInjector extends HeadlineInjector {
 
-    protected _linkToHeadlineMap: Map<string, IHeadline>;
+    protected _linkToHeadlineMap: Map<string, headline>;
 
     constructor(overlay: HeadlineOverlay) {
         super(overlay);
-        this._linkToHeadlineMap = new Map<string, IHeadline>();
+        this._linkToHeadlineMap = new Map<string, headline>();
     }
 
     findAllNodes = (): NodeList => {
         return document.querySelectorAll("a");
-    }
+    };
 
     inject() {
         super.inject();
-
         Log.info("LinkInjector injecting")
     }
 
     injectIntoNodes (nodes: NodeList): void {
         let messageData = [];
+
         for(let node of nodes) {
             let link = <HTMLLinkElement>node;
             if (link !== null){
@@ -44,7 +44,7 @@ class LinkInjector extends HeadlineInjector {
             super.injectIntoNodes(nodes);
         });
     }
-    getDataForNode(elm: HTMLLinkElement): IHeadline {
+    getDataForNode(elm: HTMLLinkElement): headline {
         if (elm === null || elm.href.length === 0)
             return null;
 

@@ -1,10 +1,10 @@
-import { ILimit } from "../models/limit";
-import { INewsSite } from "../models/newsSite";
-import { ITabData } from "../models/tabData";
-import { getHtmlTemplate } from "../util/util";
+import {ILimit} from "../models/limit";
+import {INewsSite} from "../models/newsSite";
+import {ITabData} from "../models/tabData";
+import {getHtmlTemplate} from "../util/util";
 import BaseOverlay from "./baseOverlay";
 import Log from "../util/debug";
-import { CLASS_PREFIX } from "../config/constants";
+import {CLASS_PREFIX} from "../config/constants";
 
 class BaseInjector {
   protected _injectedDomElements: HTMLElement[];

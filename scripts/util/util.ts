@@ -1,6 +1,5 @@
 import {ILimit, Limits} from "../models/limit";
-import * as moment from '../../node_modules/moment/min/moment-with-locales.min.js';
-import Log from "./debug";
+import * as moment from 'moment/locale/nb';
 import {ISubmission} from "../models/submission";
 import {IArticleUrlTemplates} from "../models/ArticleUrlTemplates";
 
@@ -61,6 +60,7 @@ export function getNearestLimitWithValue(limits: ILimit[], reportCount: number):
  * @returns {Promise<T>}
  */
 export function imageToBase64(blob: Blob) {
+    // @ts-ignore
     return new Promise((resolve, reject) => {
         const reader = new FileReader();
         reader.onloadend = (e) => resolve(reader.result);
@@ -76,6 +76,7 @@ export function imageToBase64(blob: Blob) {
  * @returns {Promise<T>}
  */
 export function getHtmlTemplate(templatePath: string, templateSection: string = null) {
+    // @ts-ignore
     return new Promise((resolve, reject) => fetch(chrome.extension.getURL(`html/templates/${templatePath}`))
         .then(response => {
             response.text()
@@ -125,16 +126,21 @@ export function trimUrlToPath(url: string) {
     }
 }
 
+
 /**
  * Trims a url https://www.something.no/heua/?ad=s to https://www.something.no/heua
  * @param {string} url
  * @returns {string}
  */
 export function trimUrlGetParams(url: string) {
+    function endsWith(hash: string, s: string) {
+        let lastChar = hash.charAt(hash.length - 1);
+        return lastChar === s.charAt(0);
+    }
     try{
-        let question = url.split("?")[0];
-        let hash = question.split("#")[0];
-        if (hash.endsWith("/"))
+        let question: string = url.split("?")[0];
+        let hash: string = question.split("#")[0];
+        if (endsWith(hash, "/"))
             return hash.slice(0, -1);
         return hash;
     }catch(e){
@@ -163,6 +169,7 @@ export function trimUrlHttpProtocol(url: string) {
  * Retrieves the current tab
  */
 export function currentTab() {
+    // @ts-ignore
     return new Promise((resolve, reject) => {
         chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
             resolve(tabs[0]);
@@ -202,6 +209,7 @@ export function wordsToReadingTimeInMinutes(words: number): string {
  * @returns {Promise<any>}
  */
 export function createSubmissionForm(submission: ISubmission, textareaName: string, formTitle: string): Promise<any> {
+    // @ts-ignore
     return new Promise((resolve, reject) => getHtmlTemplate("submissionForm.html", "body")
         .then((template: HTMLElement) => {
             let html = <HTMLElement>template.cloneNode(true);

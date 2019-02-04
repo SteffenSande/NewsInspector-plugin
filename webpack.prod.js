@@ -1,36 +1,37 @@
-const merge = require('webpack-merge');
-const common = require('./webpack.common');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const merge = require("webpack-merge");
+const common = require("./webpack.common");
+const CopyWebpackPlugin = require("copy-webpack-plugin");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require("path");
 
 console.log("Production build");
 
 const name = "NewsEnhancer";
 
 function folder(path) {
-    if (typeof path === "undefined" || path === null)
-        return name + "/";
-    return name + "/" + path;
+  if (typeof path === "undefined" || path === null) return name + "/";
+  return name + "/" + path;
 }
 
 module.exports = merge(common, {
-    output: {
-        filename: folder('scripts/[name]/bundle.js')
-    },
+  output: {
+    filename: folder("scripts/[name]/bundle.js"),
+    path: path.resolve(__dirname, "")
+  },
 
-    plugins: [
-        new CopyWebpackPlugin([
-            {from: './html', to: folder('html')},
-            {from: './icons', to: folder('icons')},
-            {from: './manifest.json', to: folder() },
-            {from: './style/fonts', to: folder('style/fonts') }
-        ]),
-        new UglifyJSPlugin(),
-        new ExtractTextPlugin({ // define where to save the file
-            filename: folder('style') + '/[name]/bundle.css',
-            allChunks: true
-        })
-    ]
+  plugins: [
+    new CopyWebpackPlugin([
+      {from: "./html", to: folder("html")},
+      {from: "./icons", to: folder("icons")},
+      {from: "./manifest.json", to: folder()},
+      {from: "./styles/fonts", to: folder("styles/fonts")}
+    ]),
+    new UglifyJSPlugin(),
+    new MiniCssExtractPlugin({
+      // define where to save the file
+      filename: folder("style") + "/[name]/bundle.css",
+      allChunks: true
+    })
+  ]
 });
-
