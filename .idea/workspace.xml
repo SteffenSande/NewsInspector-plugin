@@ -2,116 +2,117 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="920498c0-86e2-4a47-8ff8-ffd4e5f3c031" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/saveactions_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/scripts/devtools-panel/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/background/index.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/styles/panel/bundle.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/html/panel.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/html/panel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/html/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/html/popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/html/templates/article.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/html/templates/article.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/manifest.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsEnhancer/scripts/background/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/scripts/background/bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsEnhancer/scripts/content/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/scripts/content/bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsEnhancer/scripts/devtools/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/scripts/devtools/bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsEnhancer/scripts/panel/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/scripts/panel/bundle.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsEnhancer/scripts/popup/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/scripts/popup/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/background/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/style/background/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/content/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/style/content/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/devtools/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/style/devtools/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/panel/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/style/panel/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/popup/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/style/popup/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/panel.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/panel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/panel22.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/panel22.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/popup.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/popup.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/06a7df4bd250b39052ec138926a9b8ec.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/140f41485edce6f713abe17625eba4c1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/1ecd641925f90e0e0d7536d00a58123d.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/21271283456422d72f3e3cd220eb1a8d.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/4910ec733558f59bf05834d4f831a48d.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/4ea4d678cefebf94978464f9a052c0fd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/674f50d287a8c48dc19ba404d20fe713.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/813b8aee60f235b36887a388b70e1359.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-Black.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-BlackItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-Bold.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-BoldItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-Light.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-LightItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-Medium.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-MediumItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-Regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-RegularItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-Thin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/Roboto-ThinItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/af7ae505a9eed503f8b8e6982036873e.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/b06871f281fee6b241d60582ae9369b9.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/cfada51b8db17f060a71f7e838f3b9b9.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/de3ae99b0d3384e3214d2dd73251594b.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/e57e108a1ae04ca2b27cab75e4478867.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/e98a92ac980c63c46a7e25c4fbcf30ef.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/style/fonts/fee66e712a8a08eef5805a46892932ad.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/06a7df4bd250b39052ec138926a9b8ec.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/140f41485edce6f713abe17625eba4c1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/1ecd641925f90e0e0d7536d00a58123d.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/21271283456422d72f3e3cd220eb1a8d.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/4910ec733558f59bf05834d4f831a48d.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/4ea4d678cefebf94978464f9a052c0fd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/674f50d287a8c48dc19ba404d20fe713.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/813b8aee60f235b36887a388b70e1359.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-Black.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-BlackItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-Bold.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-BoldItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-Light.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-LightItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-Medium.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-MediumItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-Regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-RegularItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-Thin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/Roboto-ThinItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/af7ae505a9eed503f8b8e6982036873e.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/b06871f281fee6b241d60582ae9369b9.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/cfada51b8db17f060a71f7e838f3b9b9.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/de3ae99b0d3384e3214d2dd73251594b.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/e57e108a1ae04ca2b27cab75e4478867.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/e98a92ac980c63c46a7e25c4fbcf30ef.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/fonts/fee66e712a8a08eef5805a46892932ad.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/html/devtools.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/html/panel.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/html/panel22.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/html/popup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/html/templates/article.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/html/templates/headlineInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/html/templates/modal.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/html/templates/submissionForm.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/html/templates/wordcloud.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/icons/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/scripts/panel/bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/06a7df4bd250b39052ec138926a9b8ec.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/140f41485edce6f713abe17625eba4c1.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/1ecd641925f90e0e0d7536d00a58123d.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/21271283456422d72f3e3cd220eb1a8d.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/4910ec733558f59bf05834d4f831a48d.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/4ea4d678cefebf94978464f9a052c0fd.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/674f50d287a8c48dc19ba404d20fe713.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/813b8aee60f235b36887a388b70e1359.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-Black.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-BlackItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-Bold.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-BoldItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-Light.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-LightItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-Medium.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-MediumItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-Regular.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-RegularItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-Thin.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/Roboto-ThinItalic.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/af7ae505a9eed503f8b8e6982036873e.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/b06871f281fee6b241d60582ae9369b9.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/cfada51b8db17f060a71f7e838f3b9b9.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/de3ae99b0d3384e3214d2dd73251594b.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/e57e108a1ae04ca2b27cab75e4478867.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/e98a92ac980c63c46a7e25c4fbcf30ef.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/fa-brands-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/fa-regular-400.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/fa-solid-900.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/fonts/fee66e712a8a08eef5805a46892932ad.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/NewsEnhancer/style/panel/bundle.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/background/background.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/background/background.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/background/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/background/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/background/contextMenu.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/background/contextMenu.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/background/initilize.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/background/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/background/storage/storageType.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/background/storage/storageType.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/background/wordcloud.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/background/wordcloud.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/article/baseMode.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/article/baseMode.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/article/injector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/article/injector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/baseInjector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/baseInjector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/baseOverlay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/baseOverlay.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/headline/front_page/injector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/headline/front_page/injector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/headline/injector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/headline/injector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/headline/link/injector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/headline/link/injector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/headline/overlay.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/headline/overlay.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/content/init.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/content/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/devtools/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/devtools/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/devtools/devtools.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/devtools/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/models/headline.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/models/headline.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/models/newsSite.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/models/newsSite.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/models/submission.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/models/submission.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/panel/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/panel/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/panel/panel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/panel/panel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/panels/bundle.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/popup/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/popup/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/popup/init.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/popup/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/popup/popup.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/popup/popup.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/util/api.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/util/api.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/util/debug.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/util/debug.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/util/util.ts" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/util/util.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/background/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/background/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/background/popup/_popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/background/popup/_popup.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/article/_article.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/article/_article.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/article/_report_mode.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/article/_report_mode.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/article/_revision_mode.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/article/_revision_mode.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/content.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/headline/_headline.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/headline/_headline.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/headline/_icon.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/headline/_icon.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/headline/_overlay.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/headline/_overlay.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/headline/_report.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/headline/_report.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/headline/_revision_mode.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/headline/_revision_mode.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/modal/_modal.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/modal/_modal.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/submission/_submission.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/submission/_submission.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/content/wordcloud/_wordcloud.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/content/wordcloud/_wordcloud.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/devtools/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/devtools/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/devtools/devtools.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/devtools/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/06a7df4bd250b39052ec138926a9b8ec.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/06a7df4bd250b39052ec138926a9b8ec.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/140f41485edce6f713abe17625eba4c1.woff" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/140f41485edce6f713abe17625eba4c1.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/1ecd641925f90e0e0d7536d00a58123d.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/1ecd641925f90e0e0d7536d00a58123d.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/21271283456422d72f3e3cd220eb1a8d.eot" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/21271283456422d72f3e3cd220eb1a8d.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/4910ec733558f59bf05834d4f831a48d.eot" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/4910ec733558f59bf05834d4f831a48d.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/4ea4d678cefebf94978464f9a052c0fd.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/4ea4d678cefebf94978464f9a052c0fd.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/674f50d287a8c48dc19ba404d20fe713.eot" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/674f50d287a8c48dc19ba404d20fe713.eot" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/813b8aee60f235b36887a388b70e1359.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/813b8aee60f235b36887a388b70e1359.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-Black.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-Black.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-BlackItalic.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-BlackItalic.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-Bold.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-Bold.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-BoldItalic.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-BoldItalic.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-Light.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-Light.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-LightItalic.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-LightItalic.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-Medium.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-Medium.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-MediumItalic.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-MediumItalic.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-Regular.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-Regular.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-RegularItalic.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-RegularItalic.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-Thin.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-Thin.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/Roboto-ThinItalic.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/Roboto-ThinItalic.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/af7ae505a9eed503f8b8e6982036873e.woff2" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/af7ae505a9eed503f8b8e6982036873e.woff2" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/b06871f281fee6b241d60582ae9369b9.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/b06871f281fee6b241d60582ae9369b9.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/cfada51b8db17f060a71f7e838f3b9b9.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/cfada51b8db17f060a71f7e838f3b9b9.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/de3ae99b0d3384e3214d2dd73251594b.woff" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/de3ae99b0d3384e3214d2dd73251594b.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/e57e108a1ae04ca2b27cab75e4478867.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/e57e108a1ae04ca2b27cab75e4478867.ttf" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/e98a92ac980c63c46a7e25c4fbcf30ef.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/e98a92ac980c63c46a7e25c4fbcf30ef.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/fa-brands-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/fa-brands-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/fa-regular-400.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/fa-regular-400.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/fa-solid-900.svg" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/fa-solid-900.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/fonts/fee66e712a8a08eef5805a46892932ad.woff" beforeDir="false" afterPath="$PROJECT_DIR$/styles/fonts/fee66e712a8a08eef5805a46892932ad.woff" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/panel/bundle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/panel/panel.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/panel/panel.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/panels/bundle.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/popup/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/popup/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style/popup/popup.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/popup/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.common.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.common.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.dev.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webpack.prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.prod.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -126,20 +127,72 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="798">
-              <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+            <state relative-caret-position="638">
+              <caret line="26" column="73" selection-start-line="26" selection-start-column="73" selection-end-line="26" selection-end-column="73" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/styles/content/index.scss">
+        <entry file="file://$PROJECT_DIR$/scripts/util/api.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="406">
+              <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#39#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/panel.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/manifest.json">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/popup.html">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/NewsEnhancer/html/panel.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/webpack.common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1450">
+              <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/webpack.prod.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="522">
+              <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
             </state>
           </provider>
         </entry>
@@ -147,75 +200,16 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles/content/modal/_modal.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
+            <state relative-caret-position="3103">
               <caret line="107" column="10" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/util/util.ts">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="79" column="69" selection-start-line="79" selection-start-column="69" selection-end-line="79" selection-end-column="69" />
-              <folding>
-                <element signature="e#0#47#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/HeadlineRevision.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="25" selection-start-line="25" selection-end-line="25" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/styles/content/headline/_icon.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="10" selection-start-line="10" selection-end-line="10" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tsconfig.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/index.tsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/styles/content/article/_article.scss">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/styles/content/article/_revision_mode.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
+            <state relative-caret-position="348">
               <caret line="12" selection-start-line="12" selection-end-line="12" />
             </state>
           </provider>
@@ -251,13 +245,11 @@
         <option value="$PROJECT_DIR$/webpack.dev.js" />
         <option value="$PROJECT_DIR$/scripts/devtools-panel/index.tsx" />
         <option value="$PROJECT_DIR$/style/devtools-panel/devtools-panel.scss" />
-        <option value="$PROJECT_DIR$/NewsEnhancer/html/panel.html" />
         <option value="$PROJECT_DIR$/webpack.prod.js" />
         <option value="$PROJECT_DIR$/manifest.json" />
         <option value="$PROJECT_DIR$/scripts/util/debug.ts" />
         <option value="$PROJECT_DIR$/scripts/background/index.ts" />
         <option value="$PROJECT_DIR$/style/background/index.scss" />
-        <option value="$PROJECT_DIR$/scripts/util/api.ts" />
         <option value="$PROJECT_DIR$/scripts/content/baseOverlay.ts" />
         <option value="$PROJECT_DIR$/scripts/content/baseInjector.ts" />
         <option value="$PROJECT_DIR$/scripts/background/wordcloud.ts" />
@@ -278,12 +270,16 @@
         <option value="$PROJECT_DIR$/scripts/background/storage/storageType.ts" />
         <option value="$PROJECT_DIR$/scripts/popup/index.ts" />
         <option value="$PROJECT_DIR$/scripts/popup/popup.ts" />
-        <option value="$PROJECT_DIR$/webpack.common.js" />
         <option value="$PROJECT_DIR$/styles/content/index.scss" />
         <option value="$PROJECT_DIR$/scripts/content/index.ts" />
         <option value="$PROJECT_DIR$/scripts/util/util.ts" />
         <option value="$PROJECT_DIR$/tsconfig.json" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/scripts/util/enums.ts" />
         <option value="$PROJECT_DIR$/scripts/devtools-panel/App.tsx" />
+        <option value="$PROJECT_DIR$/scripts/util/api.ts" />
+        <option value="$PROJECT_DIR$/NewsEnhancer/html/panel.html" />
+        <option value="$PROJECT_DIR$/webpack.common.js" />
       </list>
     </option>
   </component>
@@ -298,7 +294,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -314,6 +309,11 @@
             <path>
               <item name="plugin" type="b2602c69:ProjectViewProjectNode" />
               <item name="plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="NewsEnhancer" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -322,15 +322,22 @@
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
               <item name="devtools-panel" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$USER_HOME$/application" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -381,17 +388,19 @@
       <workItem from="1549274828109" duration="2687000" />
       <workItem from="1549280722501" duration="6054000" />
       <workItem from="1549291127577" duration="20013000" />
+      <workItem from="1549318333250" duration="83000" />
+      <workItem from="1549331897708" duration="2530000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="50425000" />
+    <option name="totallyTimeSpent" value="53038000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1680" y="25" width="1920" height="1055" extended-state="6" />
+    <frame x="0" y="35" width="3000" height="1965" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16877638" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1684709" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -437,64 +446,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/styles/background/bundle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="66" selection-start-column="66" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/background/index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="21" selection-start-column="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/content/baseOverlay.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#47#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/content/baseInjector.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/util/enums.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/background/popup/_popup.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/util/api.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/background/wordcloud.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="1" column="18" selection-start-line="1" selection-start-column="18" selection-end-line="1" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/background/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -668,20 +619,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/@fortawesome/fontawesome-free/scss/solid.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/@fortawesome/fontawesome-free/scss/solid.scss" />
     <entry file="file://$PROJECT_DIR$/html/templates/article.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="546">
           <caret line="29" column="43" selection-start-line="29" selection-start-column="43" selection-end-line="29" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/webpack.common.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="55" column="37" selection-start-line="55" selection-start-column="37" selection-end-line="55" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -704,23 +646,6 @@
     <entry file="file://$PROJECT_DIR$/styles/content/headline/_revision_mode.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles/content/article/_article.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/content/article/_revision_mode.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="12" selection-start-line="12" selection-end-line="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/content/index.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/content/index.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
@@ -731,50 +656,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/styles/content/modal/_modal.scss">
+    <entry file="file://$PROJECT_DIR$/node_modules/moment/moment.js" />
+    <entry file="file://$PROJECT_DIR$/node_modules/moment/README.md" />
+    <entry file="file://$PROJECT_DIR$/node_modules/moment/locale/nb.js" />
+    <entry file="file://$PROJECT_DIR$/styles/content/index.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="107" column="10" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
+        <state relative-caret-position="261">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/moment/moment.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="74" selection-start-line="3" selection-start-column="74" selection-end-line="3" selection-end-column="74" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/moment/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="609">
-            <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/styles/content/headline/_icon.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/moment/locale/nb.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tsconfig.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        <state relative-caret-position="1015">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/util/util.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
+        <state relative-caret-position="2204">
           <caret line="79" column="69" selection-start-line="79" selection-start-column="69" selection-end-line="79" selection-end-column="69" />
           <folding>
             <element signature="e#0#47#0" expanded="true" />
@@ -782,19 +683,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/HeadlineRevision.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
+        <state relative-caret-position="667">
           <caret line="25" selection-start-line="25" selection-end-line="25" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -802,10 +693,105 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/styles/content/headline/_icon.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="5" column="28" selection-start-line="5" selection-start-column="28" selection-end-line="5" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="5" column="38" selection-start-line="5" selection-start-column="38" selection-end-line="5" selection-end-column="38" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/content/article/_article.scss">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/content/article/_revision_mode.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/util/enums.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="58">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/styles/content/modal/_modal.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3103">
+          <caret line="107" column="10" selection-start-line="107" selection-start-column="10" selection-end-line="107" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="798">
-          <caret line="42" column="46" selection-start-line="42" selection-start-column="46" selection-end-line="42" selection-end-column="46" />
+        <state relative-caret-position="638">
+          <caret line="26" column="73" selection-start-line="26" selection-start-column="73" selection-end-line="26" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/util/api.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="14" column="28" selection-start-line="14" selection-start-column="28" selection-end-line="14" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="5" column="34" selection-start-line="5" selection-start-column="34" selection-end-line="5" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manifest.json">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/popup.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/NewsEnhancer/html/panel.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="5" column="43" selection-start-line="5" selection-start-column="43" selection-end-line="5" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.prod.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="522">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/webpack.common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1450">
+          <caret line="54" column="35" selection-start-line="54" selection-start-column="35" selection-end-line="54" selection-end-column="35" />
         </state>
       </provider>
     </entry>

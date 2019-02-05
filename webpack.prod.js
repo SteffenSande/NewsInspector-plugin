@@ -30,7 +30,7 @@ module.exports = merge(common, {
     new UglifyJSPlugin(),
     new MiniCssExtractPlugin({
       // define where to save the file
-      filename: folder("style") + "/[name]/bundle.css",
+      filename: folder("styles") + "/[name]/bundle.css",
       allChunks: true
     })
   ]
