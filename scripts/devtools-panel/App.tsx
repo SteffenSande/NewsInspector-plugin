@@ -4,6 +4,7 @@ import {EndPoints} from "../util/enums";
 import {headline} from "../models/headline";
 import HeadlineRevision from './HeadlineRevision';
 import NavBar from "./NavBar";
+import Log from '../util/debug';
 
 export interface IAppProps {
 }
@@ -23,10 +24,14 @@ export default class App extends React.Component<IAppProps, IAppState> {
         // Information needed from the content script is what
         // and what headline is currently selected.
         let headline = Api.get(EndPoints.SITE + "4/" + EndPoints.HEADLINE);
-        headline.then((h: headline[]) => {
-            this.setState({...this.state, headlines: h, selected: 75, diffNr: 0});
-            this.setState({...this.state,})
-        });
+        headline
+            .then((h: headline[]) => {
+                this.setState({...this.state, headlines: h, selected: 75, diffNr: 0});
+                this.setState({...this.state,})
+            })
+            .catch(error => {
+                Log.error(error);
+            });
     }
 
     chooseNext() {

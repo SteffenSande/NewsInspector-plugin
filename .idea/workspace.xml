@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="920498c0-86e2-4a47-8ff8-ffd4e5f3c031" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/devtools-panel/NavBar.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/html/panel.html" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/html/panel.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/NewsEnhancer/scripts/panel/bundle.js" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/scripts/panel/bundle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/NewsEnhancer/styles/panel/bundle.css" beforeDir="false" afterPath="$PROJECT_DIR$/NewsEnhancer/styles/panel/bundle.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/html/panel.html" beforeDir="false" afterPath="$PROJECT_DIR$/html/panel.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/devtools-panel/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/devtools-panel/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/devtools-panel/InfoWithLabel.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/devtools-panel/InfoWithLabel.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/styles/devtools-panel/index.scss" beforeDir="false" afterPath="$PROJECT_DIR$/styles/devtools-panel/index.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.dev.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.dev.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -29,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/App.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+            <state relative-caret-position="294">
+              <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -41,7 +32,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/InfoWithLabel.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="588">
+            <state>
               <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
             </state>
           </provider>
@@ -65,7 +56,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/models/revision.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
+            <state>
               <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
               <folding>
                 <element signature="e#0#53#0" expanded="true" />
@@ -88,7 +79,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/models/headline.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="273">
+            <state>
               <caret line="20" selection-start-line="20" selection-end-line="20" />
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
@@ -100,7 +91,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/models/headlineDiff.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
+            <state>
               <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
             </state>
           </provider>
@@ -109,7 +100,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/NavBar.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="483">
+            <state>
               <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
             </state>
           </provider>
@@ -180,8 +171,8 @@
         <option value="$PROJECT_DIR$/scripts/devtools-panel/NavBar.tsx" />
         <option value="$PROJECT_DIR$/html/panel.html" />
         <option value="$PROJECT_DIR$/styles/devtools-panel/index.scss" />
-        <option value="$PROJECT_DIR$/scripts/devtools-panel/App.tsx" />
         <option value="$PROJECT_DIR$/scripts/devtools-panel/InfoWithLabel.tsx" />
+        <option value="$PROJECT_DIR$/scripts/devtools-panel/App.tsx" />
       </list>
     </option>
   </component>
@@ -230,6 +221,12 @@
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
               <item name="devtools-panel" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="plugin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="plugin" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -243,7 +240,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="settings.saveactions" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
     <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
   </component>
   <component name="RecentsManager">
@@ -292,12 +289,13 @@
       <workItem from="1549291127577" duration="20013000" />
       <workItem from="1549318333250" duration="83000" />
       <workItem from="1549331897708" duration="2530000" />
-      <workItem from="1549447392328" duration="455000" />
+      <workItem from="1549447392328" duration="576000" />
+      <workItem from="1549447986821" duration="1045000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67294000" />
+    <option name="totallyTimeSpent" value="68460000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -310,7 +308,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="25" width="1920" height="1055" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16877638" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -590,8 +587,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/App.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="26" column="32" selection-start-line="26" selection-start-column="32" selection-end-line="26" selection-end-column="32" />
+        <state relative-caret-position="294">
+          <caret line="14" column="18" selection-start-line="14" selection-start-column="18" selection-end-line="14" selection-end-column="18" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -600,7 +597,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/InfoWithLabel.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="588">
+        <state>
           <caret line="28" column="5" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
         </state>
       </provider>
@@ -616,7 +613,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/models/revision.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state>
           <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
           <folding>
             <element signature="e#0#53#0" expanded="true" />
@@ -635,7 +632,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/models/headline.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
+        <state>
           <caret line="20" selection-start-line="20" selection-end-line="20" />
           <folding>
             <element signature="e#0#42#0" expanded="true" />
@@ -645,14 +642,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/models/headlineDiff.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
+        <state>
           <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/devtools-panel/NavBar.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
+        <state>
           <caret line="23" column="28" selection-start-line="23" selection-start-column="28" selection-end-line="23" selection-end-column="28" />
         </state>
       </provider>
