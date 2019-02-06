@@ -3,6 +3,7 @@ import * as Api from "../util/api";
 import {EndPoints} from "../util/enums";
 import {headline} from "../models/headline";
 import HeadlineRevision from './HeadlineRevision';
+import NavBar from "./NavBar";
 
 export interface IAppProps {
 }
@@ -10,15 +11,12 @@ export interface IAppProps {
 export interface IAppState {
     selected: number;
     headlines: headline[];
+    diffNr: number;
 }
 
 export default class App extends React.Component<IAppProps, IAppState> {
     constructor(props: IAppProps) {
         super(props);
-        this.state = {
-            selected: 1,
-            headlines: []
-        }
     }
 
     componentDidMount() {
@@ -26,30 +24,52 @@ export default class App extends React.Component<IAppProps, IAppState> {
         // and what headline is currently selected.
         let headline = Api.get(EndPoints.SITE + "4/" + EndPoints.HEADLINE);
         headline.then((h: headline[]) => {
-            this.setState({...this.state, headlines: h});
+            this.setState({...this.state, headlines: h, selected: 75, diffNr: 0});
+            this.setState({...this.state,})
         });
-        this.setState({...this.state, selected:0})
     }
 
     chooseNext() {
-        if (this.state.selected < this.state.headlines.length - 1) {
-            this.setState({...this.state, selected: this.state.selected + 1});
+        if (this.state.diffNr < this.state.headlines[this.state.selected].diffs.length - 1) {
+            this.setState({...this.state, diffNr: this.state.diffNr + 1});
         } else {
-            this.setState({...this.state, selected: 0});
+            this.setState({...this.state, diffNr: 0});
+        }
+    }
+
+    choosePrevious() {
+        if (this.state.diffNr > 0) {
+            this.setState({...this.state, diffNr: this.state.diffNr - 1});
+        } else {
+            this.setState({...this.state, diffNr: this.state.headlines[this.state.selected].diffs.length - 1});
         }
     }
 
     render() {
-        return this.state.headlines.length == 0 ? (
+        console.log(this.state);
+        return this.state === null ? (
             <div className="App">
-                <div className="loader"/>
+                <NavBar/>
+                <div className="loader"></div>
             </div>
         ) : (
             <div className="App">
+                <NavBar/>
                 <HeadlineRevision
-                    title={this.state.headlines[this.state.selected].revision.title}
+                    title={this.state.headlines[this.state.selected].diffs[this.state.diffNr].title}
                 />
-                <button onClick={() => this.chooseNext()}> Next headline</button>
+                <button className={'btn btn-light'}
+                        onClick={() => {
+                            this.choosePrevious();
+                        }}
+                > Previous diff
+                </button>
+                <button className={'btn btn-dark'}
+                        onClick={() => {
+                            this.chooseNext();
+                        }}
+                > Next diff
+                </button>
             </div>
         );
     }
