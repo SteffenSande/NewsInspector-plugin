@@ -23,10 +23,19 @@ export default class App extends React.Component<IAppProps, IAppState> {
     componentDidMount() {
         // Information needed from the content script is what
         // and what headline is currently selected.
-        let headline = Api.get(EndPoints.SITE + "4/" + EndPoints.HEADLINE);
+        let headline = Api.get(EndPoints.SITE + "2/" + EndPoints.HEADLINE);
         headline
             .then((h: headline[]) => {
-                this.setState({...this.state, headlines: h, selected: 75, diffNr: 0});
+
+
+                let indexOfElementThatHasDiffs = 1;
+                for (let i = 0; i < h.length; i++) {
+                    if (h[i].diffs.length > 0) {
+                        indexOfElementThatHasDiffs = i;
+                    }
+                }
+
+                this.setState({...this.state, headlines: h, selected: indexOfElementThatHasDiffs, diffNr: 0});
                 this.setState({...this.state,})
             })
             .catch(error => {
