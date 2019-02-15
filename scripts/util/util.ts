@@ -16,7 +16,7 @@ export function printDateTime(dateString: string): string {
         let then = moment(dateString);
         let now = moment();
         return `${moment.duration(then.diff(now)).humanize(true)}`;
-    }catch(e){
+    } catch (e) {
         return "";
     }
 }
@@ -106,9 +106,9 @@ export function getResource(path: string) {
  * @returns {string}
  */
 export function trimUrlToHostname(url: string) {
-    try{
+    try {
         return trimUrlHttpProtocol(url).replace("www.", "").split('/')[0];
-    }catch(e){
+    } catch (e) {
         return trimUrlHttpProtocol(url);
     }
 }
@@ -119,9 +119,9 @@ export function trimUrlToHostname(url: string) {
  * @returns {string}
  */
 export function trimUrlToPath(url: string) {
-    try{
+    try {
         return trimUrlHttpProtocol(url).split("/").slice(1).join("/");
-    }catch(e){
+    } catch (e) {
         return trimUrlHttpProtocol(url);
     }
 }
@@ -137,13 +137,14 @@ export function trimUrlGetParams(url: string) {
         let lastChar = hash.charAt(hash.length - 1);
         return lastChar === s.charAt(0);
     }
-    try{
+
+    try {
         let question: string = url.split("?")[0];
         let hash: string = question.split("#")[0];
         if (endsWith(hash, "/"))
             return hash.slice(0, -1);
         return hash;
-    }catch(e){
+    } catch (e) {
         return url;
     }
 }
@@ -154,12 +155,12 @@ export function trimUrlGetParams(url: string) {
  * @returns {string}
  */
 export function trimUrlHttpProtocol(url: string) {
-    try{
+    try {
         return url
             .replace("https", "")
             .replace("http", "")
             .replace("://", "");
-    }catch(e){
+    } catch (e) {
         return url;
     }
 }
@@ -171,7 +172,7 @@ export function trimUrlHttpProtocol(url: string) {
 export function currentTab() {
     // @ts-ignore
     return new Promise((resolve, reject) => {
-        chrome.tabs.query({currentWindow: true, active: true}, function(tabs){
+        chrome.tabs.query({currentWindow: true, active: true}, function (tabs) {
             resolve(tabs[0]);
         });
     });
@@ -231,7 +232,8 @@ export function createSubmissionForm(submission: ISubmission, textareaName: stri
 export function find_headline_id(headlineUrl: string, urlTemplates: IArticleUrlTemplates[]): string {
     let url = headlineUrl.split('/');
 
-    for (let url_template of urlTemplates) { let url_id = url[url.length + url_template.id_position];
+    for (let url_template of urlTemplates) {
+        let url_id = url[url.length + url_template.id_position];
 
         if (url_template.id_separator.length > 0) {
             let splitted_url_id = url_id.split(url_template.id_separator);
@@ -243,3 +245,33 @@ export function find_headline_id(headlineUrl: string, urlTemplates: IArticleUrlT
     }
     return "";
 }
+
+/**
+ * This is a function that gets a list that contains the text within the tags specified
+ * The tag should only contain the key word
+ * @param text - the text that contains the tag and text.
+ * @param tag - keyword, method will surround it with <> so no need to spesify this in your code.
+ * @returns empty list if no match is found
+ */
+export function getListOfTextInsideTag(text: string, tag: string): string[] {
+    let innerFakeTagText: string[] = [];
+    let htmlTag: string = ('<' + tag + '> ');
+    let endHtmlTag: string = ('<' + tag + '/> ');
+
+    let startIndex: number = 0;
+    let endIndex: number = 0;
+    let searchFrom: number = 0;
+
+    while (startIndex) {
+        startIndex = searchFrom + text.slice(searchFrom).indexOf(htmlTag) + htmlTag.length;
+        endIndex = searchFrom + text.slice(searchFrom).indexOf((endHtmlTag));
+        // could say something about the endIndex also, but since this is a closed system, no other way to specify
+        // endTagHtml than with code so this should be fine to ignore.
+        if (startIndex != -1) {
+            innerFakeTagText.push(text.slice(startIndex, endIndex));
+            searchFrom = endIndex + endHtmlTag.length;
+        }
+    }
+    return innerFakeTagText
+}
+
