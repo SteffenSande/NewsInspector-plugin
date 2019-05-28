@@ -30,7 +30,7 @@ class Popup {
         currentTab()
             .then((tab: Tab) => {
                 let messageData = {word_cloud_link: this._currentSite.word_cloud, tab: {id: tab.id}};
-                chrome.runtime.sendMessage(createMessage(messageTypes.GENERATE_WORDCLOUD_FOR_SITE, messageData));
+                //chrome.runtime.sendMessage(createMessage(messageTypes.GENERATE_WORDCLOUD_FOR_SITE, messageData));
             });
 
         window.close();

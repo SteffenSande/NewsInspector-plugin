@@ -4,7 +4,7 @@ export enum ServerLocation {
 }
 
 export enum EndPoints {
-  ARTICLE = "article/",
+  ARTICLES = "article/",
   HEADLINE = "headline/",
   HEADLINES = "headlines/",
   LIMIT = "limit/",

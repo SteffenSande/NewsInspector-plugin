@@ -1,5 +1,4 @@
 import IStorageItem from "./storageItem";
-import {IpcSocketConnectOpts} from "net";
 
 class StorageType {
     private storage: IStorageItem[] = [];

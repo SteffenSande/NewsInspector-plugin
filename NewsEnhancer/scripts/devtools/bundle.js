@@ -2,7 +2,7 @@
 /*!***********************************!*\
   !*** ./scripts/devtools/index.ts ***!
   \***********************************/
-/*! no static exports found */function(module,exports){eval('chrome.devtools.panels.create("Nyhets inspeksjon", "icons/icon.jpg", "html/panel.html", function (panel) {\n    console.log("panel created");\n});\n\n\n//# sourceURL=webpack:///./scripts/devtools/index.ts?')},"./styles/devtools/index.scss":
+/*! no static exports found */function(module,exports){eval('chrome.devtools.panels.create("Nyhets inspeksjon", "icons/icon.jpg", "html/panel.html", function (panel) {\n    // Here we instantiate communication with the background script via a long lived connection\n});\n\n\n//# sourceURL=webpack:///./scripts/devtools/index.ts?')},"./styles/devtools/index.scss":
 /*!************************************!*\
   !*** ./styles/devtools/index.scss ***!
   \************************************/

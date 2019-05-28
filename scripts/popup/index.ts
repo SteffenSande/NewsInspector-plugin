@@ -1,2 +1,2 @@
 import Popup from "./popup";
-let p = new Popup();
+//let p = new Popup();

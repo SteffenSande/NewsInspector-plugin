@@ -19,9 +19,9 @@ function folder(path) {
 module.exports = merge(common, {
     output: {
         filename: folder("scripts/[name]/bundle.js"),
-        path: path.resolve(__dirname, "")
-    },
+        path: path.resolve("", __dirname)
 
+    },
     plugins: [
         new CopyWebpackPlugin([
             {from: "./html", to: folder("html")},

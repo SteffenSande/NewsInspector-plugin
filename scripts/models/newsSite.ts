@@ -11,6 +11,7 @@ export interface INewsSite {
     articleTemplate: IArticleTemplate,
     headlineTemplate: IHeadlineTemplate,
     headlines: headline[],
+    articles: any[],
     urlTemplates: IArticleUrlTemplates[],
     word_cloud: string
 }

@@ -1,6 +1,4 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-let fontPath = "/styles/fonts/";
-let publicFontPath = "chrome-extension://__MSG_@@extension_id__";
 
 let scripts = "./scripts/";
 let typescriptReactEntryFiles = '/index.tsx';
