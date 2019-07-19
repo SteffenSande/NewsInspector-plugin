@@ -1,8 +1,7 @@
 chrome.devtools.panels.create(
-    "Nyhets inspeksjon",
+    "NyhetsInspeksjon",
     "icons/icon.jpg",
     "html/panel.html",
     function (panel) {
-        // Here we instantiate communication with the background script via a long lived connection
     }
 );

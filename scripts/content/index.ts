@@ -7,7 +7,7 @@ function onMessageDo(request) {
     console.log(request);
     switch (request.type) {
         case messageTypes.INIT: {
-            console.log(request);
+            console.log("Creating overlay");
             let site = request.payload.site;
             let _class = request.payload._class;
             overlay = new Overlay(site, _class);
@@ -16,6 +16,7 @@ function onMessageDo(request) {
             // Is connected to the panel that is inspecting so it is the correct functionality
             break;
         }
+
         case messageTypes.TURN_HOOVER_SELECT_ON: {
             console.log('Hoover on');
             if (overlay) {
@@ -27,6 +28,7 @@ function onMessageDo(request) {
             }
             break;
         }
+
         case messageTypes.TURN_HOOVER_SELECT_OFF: {
             console.log('Hoover off');
             if (overlay) {
@@ -36,6 +38,13 @@ function onMessageDo(request) {
                 // add a queue for the comands that should run when possible.
                 console.log('not fixed yet')
             }
+            break;
+        }
+
+        case messageTypes.REDIRECT_TO: {
+            console.log('Redirecting to ' + request.payload.address);
+            window.location.href = request.payload.address;
+            break;
         }
     }
 }

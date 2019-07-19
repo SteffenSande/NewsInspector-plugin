@@ -1,7 +1,7 @@
 {
-  "name": "News enhancer",
-  "description": "Provides meta-information for headlines and articles.",
-  "version": "2.0",
+  "name": "NewsInspektor",
+  "description": "Plugin that provides a panel in developer tools that allows you to view how stories develop on a news page.",
+  "version": "3.0",
   "manifest_version": 2,
   "devtools_page": "html/devtools.html",
   "permissions": [
@@ -15,7 +15,7 @@
     "scripts": ["scripts/background/bundle.js"]
   },
   "browser_action": {
-    "default_title": "News enhancer",
+    "default_title": "NewsInspektor",
     "default_icon": "icons/icon.png",
     "default_popup": "html/popup.html"
   },

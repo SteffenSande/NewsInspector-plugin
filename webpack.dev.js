@@ -7,7 +7,7 @@ const path = require("path");
 
 console.log("Development running");
 
-const name = "NewsEnhancer";
+const name = "NewsInspector";
 
 function folder(path) {
     if (typeof path === "undefined" || path === null) return name + "/";

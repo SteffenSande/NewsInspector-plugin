@@ -1,7 +1,7 @@
 import {ServerLocation} from "./enums";
 import Log from "../util/debug";
 
-export let BaseUrl: string = ServerLocation.DEV;
+export let BaseUrl: string = ServerLocation.PROD;
 let apiBase: string = `${BaseUrl}api/`;
 
 /**

@@ -5,6 +5,7 @@ export const messageTypes = {
     TURN_HOOVER_SELECT_OFF: 'TURN_HOOVER_SELECT_OFF',
     SITES_UPDATED: 'SITES_UPDATED',
     IS_SITE_SUPPORTED:'IS_SITE_SUPPORTED',
+    REDIRECT_TO: 'REDIRECT_TO',
 };
 
 export interface IMessage {

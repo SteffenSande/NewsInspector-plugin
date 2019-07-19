@@ -1,8 +1,6 @@
 import {INewsSite} from "../models/newsSite";
 import {find_headline_id} from "../util/util";
 import {messageTypes} from "../config/messageTypes";
-import Log from "../util/debug";
-
 export class Overlay {
     private tagClass: string;
     private headlines: any;
@@ -13,20 +11,22 @@ export class Overlay {
     constructor(site: INewsSite, tagClass: string) {
         this.site = site;
         this.tagClass = tagClass;
-        this.headlines = document.getElementsByClassName(tagClass);
+        this.headlines = document.querySelectorAll(tagClass);
         this.hooverOn = false;
+        console.log(this.headlines);
 
         document.onkeydown = (event) => {
+            // Used switch in case we wanted more buttons to do stuff
             switch (event.key) {
                 case 'i': {
                     this.turnOnHooverMode();
-
                     break;
                 }
             }
         };
 
         document.onkeyup = (event) => {
+            // Used switch in case we wanted more buttons to do stuff
             switch (event.key) {
                 case 'i': {
                     this.turnOffHooverMode();
@@ -40,7 +40,7 @@ export class Overlay {
             headline.onmouseover = (event) => {
                 if (this.hooverOn) {
                     let id = this.findHeadlineId(headline);
-                    console.log(this.selected);
+                    console.log('The selected headline is: ' + id);
                     if (this.selected != i) {
                         this.selected = i;
                         chrome.runtime.sendMessage(
@@ -64,11 +64,9 @@ export class Overlay {
     findHeadlineId(headline) {
         return find_headline_id(headline.getElementsByTagName('a')[0].href, this.site.urlTemplates);
     }
-
     turnOnHooverMode() {
         this.hooverOn = true;
     }
-
     turnOffHooverMode() {
         this.hooverOn = false;
     }

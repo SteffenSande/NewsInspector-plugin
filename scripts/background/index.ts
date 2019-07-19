@@ -1,6 +1,5 @@
 import Background from "./background";
 import {messageTypes} from "../config/messageTypes";
-import {url} from "inspector";
 
 let background = new Background();
 
@@ -14,34 +13,34 @@ background.init();
 
 let connections = {};
 chrome.runtime.onConnect.addListener(function (port) {
+    // Needs tabId in message header
     let extensionListener = function (message, sender, sendResponse) {
         if (message.type == messageTypes.INIT) {
-            connections[message.payload.tabId] = port;
+            connections[message.tabId] = port;
         }
 
         if (message.type == messageTypes.TURN_HOOVER_SELECT_ON) {
-            chrome.tabs.query(
-                {
-                    active: true,
-                },
-                (tabs) => {
-                    chrome.tabs.sendMessage(tabs[0].id, {
+            chrome.tabs.sendMessage(message.tabId, {
                         type: messageTypes.TURN_HOOVER_SELECT_ON,
                         payload: {}
-                    })
-                });
+            });
+            console.log('Turn hoover on');
         }
         if (message.type == messageTypes.TURN_HOOVER_SELECT_OFF) {
-            chrome.tabs.query(
-                {
-                    active: true,
-                },
-                (tabs) => {
-                    chrome.tabs.sendMessage(tabs[0].id, {
-                        type: messageTypes.TURN_HOOVER_SELECT_OFF,
-                        payload: {}
-                    })
-                });
+            chrome.tabs.sendMessage(message.tabId, {
+                type: messageTypes.TURN_HOOVER_SELECT_OFF,
+                payload: {}
+            });
+            console.log('Turn hoover off');
+        }
+        if (message.type == messageTypes.REDIRECT_TO) {
+            chrome.tabs.sendMessage(message.tabId, {
+                type: messageTypes.REDIRECT_TO,
+                payload: {
+                    address: message.payload.address
+                }
+            });
+            console.log('Redirecting to ' + message.payload.address);
         }
     };
 
@@ -64,45 +63,47 @@ chrome.runtime.onConnect.addListener(function (port) {
 
 
 chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
-
+    // This is for sending messages to the content script.
     switch (message.type) {
         case messageTypes.SITES_UPDATED:
+            //ToDo
             break;
 
         case messageTypes.IS_SITE_SUPPORTED:
-            let frontPage = background.frontPage(sender.url);
-            let urlId = '';
+            // If the site is not supported do nothing
+            if(!background.siteIsSupported(sender.url)) break;
 
-            if (!frontPage) {
-                urlId = background.getArticleUrl(sender.url);
+            let frontPage = background.frontPage(sender.url);
+            let urlId = background.getArticleUrl(sender.url);
+
+            if (frontPage) {
+                // If frontpage then initialize the overlay to enable hover-selection of headlines on the frontpage.
+                let responseMessage = {
+                    type: messageTypes.INIT,
+                    payload: {
+                        site: background.getSite(sender.url),
+                        _class: background.getSite(sender.url).headlineTemplate.headline
+                    }
+                };
+                // Make the overlay that supports hoovering
+                chrome.tabs.sendMessage(sender.tab.id, responseMessage);
             }
 
-            chrome.tabs.query(
-                {
-                    active: true,
-                },
-                (tabs) => {
-                    chrome.tabs.sendMessage(tabs[0].id, {
-                        type: messageTypes.INIT,
-                        payload:{
-                            site: background.getSite(sender.url),
-                            _class: 'preview'
-                        }
-                    })
-            });
-
+            // Make the devtool panel download the data for this newspaper
             sendMessageToDevPanelIfConnectionExists({
                 type: messageTypes.INIT,
                 payload: {
                     frontPage,
                     headlines: background.getHeadlines(sender.url),
                     articles: background.getArticles(sender.url),
+                    exclude: background.getSite(sender.url).headlineTemplate.feed,
                     urlId
                 }
             }, sender.tab.id);
             break;
 
         case messageTypes.SELECT:
+            console.log('Select:' + message.payload.selected);
             sendMessageToDevPanelIfConnectionExists(message, sender.tab.id);
             break;
     }

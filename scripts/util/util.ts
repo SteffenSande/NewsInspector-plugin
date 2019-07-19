@@ -1,8 +1,8 @@
 import {ILimit, Limits} from "../models/limit";
-import * as moment from 'moment/locale/nb';
 import {ISubmission} from "../models/submission";
 import {IArticleUrlTemplates} from "../models/ArticleUrlTemplates";
-
+import * as moment from 'moment-timezone'
+import Log from "./debug";
 /**
  * Prints a datetime or a empty string
  * @param dateString
@@ -250,7 +250,7 @@ export function find_headline_id(headlineUrl: string, urlTemplates: IArticleUrlT
  * This is a function that gets a list that contains the text within the tags specified
  * The tag should only contain the key word
  * @param text - the text that contains the tag and text.
- * @param tag - keyword, method will surround it with <> so no need to spesify this in your code.
+ * @param tag - keyword, method will surround it with <> so no need to specify this in your code.
  * @returns empty list if no match is found
  */
 export function getListOfTextInsideTag(text: string, tag: string): string[] {
@@ -275,4 +275,9 @@ export function getListOfTextInsideTag(text: string, tag: string): string[] {
     return innerFakeTagText
 }
 
+export function getLocalTime(dateTime: any) {
+    Log.error(moment(dateTime));
+    Log.debug(moment.tz('Europe/Oslo', dateTime));
 
+    return moment(dateTime).tz('Europe/Oslo');
+}
