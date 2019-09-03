@@ -2,9 +2,12 @@ import * as React from "react";
 import NavBar from "./NavBar";
 import {createNodes} from "../util/diff";
 import {getLocalTime} from "../util/util";
+import {IArticle} from "../models/article";
+import {messageTypes} from "../config/messageTypes";
 
 export interface IArticleRevisionProps {
-    article: any
+    article: IArticle,
+    connection: any
 }
 
 export interface IArticleRevisionState {
@@ -66,7 +69,6 @@ export default class ArticleRevision extends React.Component<IArticleRevisionPro
                             if (!words.includes(word)) {
                                 words.push(word);
                             }
-
                             ingress = temp;
                         }
                         this.setState({...this.state, title, ingress, words})
@@ -75,18 +77,29 @@ export default class ArticleRevision extends React.Component<IArticleRevisionPro
         }
     }
 
-    change_list() {
-        let result = [];
-        result = result.concat(this.create_multiple_nodes());
-        return result.map((node) => <li key={node.toString()}>{node}</li>);
+    change_list(selected: number) {
+        const result = this.create_multiple_nodes(selected);
+        return result.map((node, index) => <p onClick={event1 => {
+            //@ts-ignore
+            const text = event1.target.innerText
+                .replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
+            this.props.connection.postMessage({
+                type: messageTypes.FIND_TEXT,
+                tabId: chrome.devtools.inspectedWindow.tabId,
+                payload: {
+                    text
+                }
+            });
+        }} key={index}>{node}</p>);
     }
 
-    create_multiple_nodes() {
+    create_multiple_nodes(selected: number) {
         let result = [];
-        for (let diff of this.props.article.revisions[this.state.selected].diffs) {
-            result.push(createNodes(diff.changes))
+        const diffs = this.props.article.revisions[selected].diffs;
+        for (let i = 0; i < diffs.length; i++) {
+            result = [...result, createNodes(diffs[i].changes)];
         }
-        return result
+        return result;
     }
 
     chooseNext() {
@@ -150,7 +163,7 @@ export default class ArticleRevision extends React.Component<IArticleRevisionPro
                                 <h1> Endringer: </h1>
                                 <h3>{getLocalTime(this.props.article.revisions[this.state.selected].timestamp).format('HH:mm')}</h3>
                                 <ul>
-                                    {this.change_list()}
+                                    {this.change_list(this.state.selected)}
                                 </ul>
                             </div>);
                     } else {
@@ -168,9 +181,7 @@ export default class ArticleRevision extends React.Component<IArticleRevisionPro
                                 > {this.dynamicForwardButtonText()}
                                 </button>
                                 <h4> Endring {this.state.selected} av {this.props.article.revisions.length - 1} </h4>
-                                <ul>
-                                    {this.change_list()}
-                                </ul>
+                                {this.change_list(this.state.selected)}
                             </div>);
                     }
                 }

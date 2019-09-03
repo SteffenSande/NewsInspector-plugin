@@ -15,35 +15,44 @@ let connections = {};
 chrome.runtime.onConnect.addListener(function (port) {
     // Needs tabId in message header
     let extensionListener = function (message, sender, sendResponse) {
-        if (message.type == messageTypes.INIT) {
-            connections[message.tabId] = port;
-        }
+        switch(message.type){
+            case messageTypes.INIT:
+                connections[message.tabId] = port;
+                break;
 
-        if (message.type == messageTypes.TURN_HOOVER_SELECT_ON) {
-            chrome.tabs.sendMessage(message.tabId, {
-                        type: messageTypes.TURN_HOOVER_SELECT_ON,
-                        payload: {}
-            });
-            console.log('Turn hoover on');
-        }
-        if (message.type == messageTypes.TURN_HOOVER_SELECT_OFF) {
-            chrome.tabs.sendMessage(message.tabId, {
-                type: messageTypes.TURN_HOOVER_SELECT_OFF,
-                payload: {}
-            });
-            console.log('Turn hoover off');
-        }
-        if (message.type == messageTypes.REDIRECT_TO) {
-            chrome.tabs.sendMessage(message.tabId, {
-                type: messageTypes.REDIRECT_TO,
-                payload: {
-                    address: message.payload.address
-                }
-            });
-            console.log('Redirecting to ' + message.payload.address);
-        }
-    };
+            case messageTypes.TURN_HOOVER_SELECT_ON:
+                chrome.tabs.sendMessage(message.tabId, {
+                            type: messageTypes.TURN_HOOVER_SELECT_ON,
+                            payload: {}
+                });
+                console.log('Turn hoover on');
+                break;
 
+            case messageTypes.TURN_HOOVER_SELECT_OFF:
+                chrome.tabs.sendMessage(message.tabId, {
+                    type: messageTypes.TURN_HOOVER_SELECT_OFF,
+                    payload: {}
+                });
+                console.log('Turn hoover off');
+                break;
+
+            case messageTypes.REDIRECT_TO:
+                chrome.tabs.sendMessage(message.tabId, {
+                    type: messageTypes.REDIRECT_TO,
+                    payload: {
+                        address: message.payload.address
+                    }
+                });
+                console.log('Redirecting to ' + message.payload.address);
+                break;
+
+            case messageTypes.FIND_TEXT:
+                console.log('sender.tab.id');
+                console.log(message);
+                chrome.tabs.sendMessage(message.tabId, message);
+                break;
+            }
+    }
     // Listen to messages sent from the DevTools page
     // @ts-ignore
     port.onMessage.addListener(extensionListener);
@@ -104,9 +113,12 @@ chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
 
         case messageTypes.SELECT:
             console.log('Select:' + message.payload.selected);
+            console.log(message);
             sendMessageToDevPanelIfConnectionExists(message, sender.tab.id);
             break;
+
     }
+
 });
 
 

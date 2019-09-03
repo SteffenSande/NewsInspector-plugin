@@ -1,15 +1,18 @@
 import * as React from 'react';
 import TypeAndChange from "./typeAndChange";
 import {getLocalTime} from "../util/util";
+import {IHeadlineRevision} from "../models/headlineRevision";
+import {IHeadlineDiff} from "../models/headlineDiff";
+import moment from "moment-timezone/moment-timezone";
 
 export interface IHeadlineRevisionProps {
-    diffs: any[];
-    revisions: any[];
+    diffs: IHeadlineDiff[];
+    revisions: IHeadlineRevision[];
 }
 
 export interface IHeadlineRevisionState {
     selected: number;
-    time: any;
+    time: moment.Moment;
 }
 
 export default class HeadlineRevision extends React.Component<IHeadlineRevisionProps,
@@ -33,6 +36,12 @@ export default class HeadlineRevision extends React.Component<IHeadlineRevisionP
             this.setState({
                 ...this.state,
                 selected: this.state.selected + 1,
+                time: getLocalTime(this.props.revisions[this.state.selected + 1].timestamp)
+            });
+        }else{
+            this.setState({
+                ...this.state,
+                selected: 0,
                 time: getLocalTime(this.props.revisions[0].timestamp)
             });
         }
@@ -102,13 +111,13 @@ export default class HeadlineRevision extends React.Component<IHeadlineRevisionP
                         <strong>Tidspunkt: </strong> Klokken {this.state.time.format('HH:mm')} på {this.get_date()} den {this.state.time.format('DD/MM/YYYY')}
                     </p>
                     <TypeAndChange
-                        render={this.props.revisions[this.state.selected].title != "" && this.props.diffs[this.state.selected].title_changes}
+                        render={this.props.revisions[this.state.selected].title != "" && this.props.diffs[this.state.selected].title_changes.length > 0}
                         onlyShowChange={this.state.selected == 0 || this.props.diffs[this.state.selected].title_changes.length == 1}
                         old={this.get_previous_title()}
                         new={this.props.revisions[this.state.selected].title} type={'Overskrift'}
                         changes={this.props.diffs[this.state.selected].title_changes}/>
                     <TypeAndChange
-                        render={this.props.revisions[this.state.selected].sub_title != "" && this.props.diffs[this.state.selected].sub_title_changes}
+                        render={this.props.revisions[this.state.selected].sub_title != "" && this.props.diffs[this.state.selected].sub_title_changes.length > 0}
                         onlyShowChange={this.state.selected == 0 || this.props.diffs[this.state.selected].sub_title_changes.length == 1}
                         old={this.get_previous_sub_title()}
                         new={this.props.revisions[this.state.selected].sub_title} type={'Underoverskrift'}
@@ -125,13 +134,13 @@ export default class HeadlineRevision extends React.Component<IHeadlineRevisionP
                         <strong>Tidspunkt: </strong> Klokken {this.state.time.format('HH:mm')} på {this.get_date()} den {this.state.time.format('DD/MM/YYYY')}
                     </p>
                     <TypeAndChange
-                        render={this.props.revisions[this.state.selected].title != "" && this.props.diffs[this.state.selected].title_changes}
+                        render={this.props.revisions[this.state.selected].title != "" && this.props.diffs[this.state.selected].title_changes.length > 0}
                         onlyShowChange={this.state.selected == 0 || this.props.diffs[this.state.selected].title_changes.length == 1}
                         old={this.get_previous_title()}
                         new={this.props.revisions[this.state.selected].title} type={'Overskrift'}
                         changes={this.props.diffs[this.state.selected].title_changes}/>
                     <TypeAndChange
-                        render={this.props.revisions[this.state.selected].sub_title != "" && this.props.diffs[this.state.selected].sub_title_changes}
+                        render={this.props.revisions[this.state.selected].sub_title != "" && this.props.diffs[this.state.selected].sub_title_changes.length > 0}
                         onlyShowChange={this.state.selected == 0 || this.props.diffs[this.state.selected].sub_title_changes.length == 1}
                         old={this.get_previous_sub_title()}
                         new={this.props.revisions[this.state.selected].sub_title} type={'Underoverskrift'}

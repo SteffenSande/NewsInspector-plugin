@@ -1,4 +1,13 @@
+export interface IChange {
+    id:number,
+    text:string,
+    type_of_change: number,
+    pos: number,
+    title:boolean,
+}
+
 export interface IHeadlineDiff {
-    title: string,
-    sub_title: string
+    id: number,
+    title_changes: IChange[],
+    sub_title_changes: IChange[],
 }

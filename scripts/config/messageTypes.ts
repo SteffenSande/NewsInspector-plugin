@@ -6,6 +6,7 @@ export const messageTypes = {
     SITES_UPDATED: 'SITES_UPDATED',
     IS_SITE_SUPPORTED:'IS_SITE_SUPPORTED',
     REDIRECT_TO: 'REDIRECT_TO',
+    FIND_TEXT: 'FIND_TEXT',
 };
 
 export interface IMessage {

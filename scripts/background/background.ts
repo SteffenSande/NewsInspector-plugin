@@ -4,11 +4,10 @@ import {messageTypes} from "../config/messageTypes";
 import * as Api from "../util/api";
 import Log from "../util/debug";
 import {INewsSite} from "../models/newsSite";
-import {ILimit} from "../models/limit";
 import StorageType from "./storage/storageType";
 import {RELOAD_DELAY} from "../config/constants";
 import {EndPoints} from "../util/enums";
-import {headline} from "../models/headline";
+import {IHeadline} from "../models/headline";
 import {find_headline_id} from "../util/util";
 
 class Background {
@@ -52,13 +51,10 @@ class Background {
 
 
     /**
-     * Reloads storage with headlines and limits
+     * Reloads storage with headlines
      */
     reloadCache() {
-        this.load<ILimit>(this.storage.limits, EndPoints.LIMIT, "key").then(
-            // Why only get the headlines here?
-            () => this.reloadSites()
-        );
+        this.reloadSites()
     }
 
     load<T>(storage: StorageType, apiCall: string, key: string): Promise<void> {
@@ -133,7 +129,7 @@ class Background {
     getHeadlinesOnFrontPage(site: INewsSite) {
         Api
             .get(`${EndPoints.SITE}${site.id}/${EndPoints.HEADLINE}`)
-            .then((headlines: headline[]) => {
+            .then((headlines: IHeadline[]) => {
                 Log.info(
                     `Downloaded ${headlines.length} Headlines downloaded for ${
                         site.name

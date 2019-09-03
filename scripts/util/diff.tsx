@@ -1,4 +1,5 @@
 import * as React from "react";
+import {IChange} from "../models/headlineDiff";
 
 export function createTag(type_of_change: number, text) {
     //  Type of change -1: old, 0: no change and 1: new
@@ -20,11 +21,7 @@ export function createTag(type_of_change: number, text) {
     return res
 }
 
-export function createNodes(changes: any) {
-    let result = [];
+export function createNodes(changes: IChange[]) {
     changes.sort((a, b) => a.pos - b.pos);
-    for (let change of changes) {
-        result.push(createTag(change.type_of_change, change.text));
-    }
-    return result;
+    return  changes.map(change => createTag(change.type_of_change, change.text));
 }

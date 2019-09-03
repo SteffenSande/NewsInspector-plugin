@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import {createNodes} from "../util/diff";
+import {IChange} from "../models/headlineDiff";
 
 export interface IChangeProps {
     render: boolean,
@@ -7,7 +8,7 @@ export interface IChangeProps {
     old: string,
     new: string,
     type: string,
-    changes: any[],
+    changes: IChange[],
 }
 
 export interface IChangeState {

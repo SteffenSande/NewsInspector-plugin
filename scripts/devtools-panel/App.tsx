@@ -3,6 +3,8 @@ import HeadlineRevision from './HeadlineRevision';
 import NavBar from "./NavBar";
 import {messageTypes} from "../config/messageTypes";
 import ArticleRevision from "./ArticleRevision";
+import {IArticle} from "../models/article";
+import {IHeadline} from "../models/headline";
 
 export interface IAppProps {
 }
@@ -10,8 +12,8 @@ export interface IAppProps {
 export interface IAppState {
     selected: number;
     frontPage: boolean;
-    headlines: any[];
-    articles: any[];
+    headlines: IHeadline[];
+    articles: IArticle[];
     exclude: string;
 }
 
@@ -20,6 +22,8 @@ export default class App extends React.Component<IAppProps, IAppState> {
 
     constructor(props: IAppProps) {
         super(props);
+        //@ts-ignore
+        chrome.devtools.inspectedWindow.reload();
     }
 
     componentDidMount() {
@@ -61,13 +65,13 @@ export default class App extends React.Component<IAppProps, IAppState> {
                     let frontPage = message.payload.frontPage;
                     let urlId = message.payload.urlId;
                     let exclude = message.payload.exclude;
-                    console.log(exclude);
                     let selected = 0;
                     let headlineId = 0;
                     if (!exclude) {
                         exclude = "something that will never be a part of a headline so make it superlong sansddfasdhjghsdakjd fldsah g3weh qaj";
                     }
 
+                    console.log(urlId);
                     // First find the headline id
                     let found = false;
                     for (let i = 0; i < headlines.length; i++) {
@@ -188,19 +192,26 @@ export default class App extends React.Component<IAppProps, IAppState> {
                                 let longest = 0;
                                 let articleSelected = null;
                                 for (let article of this.state.articles) {
-                                    if (article.diffs.length > longest) {
-                                        articleSelected = article;
-                                        longest = article.diffs.length
+                                    if (article.revisions.length > longest) {
+                                        for (let headline of this.state.headlines) {
+                                            if (headline.id == article.headline) {
+                                                articleSelected = article;
+                                                longest = article.revisions.length
+                                            }
+                                        }
                                     }
                                 }
 
-                                this.backgroundPageConnection.postMessage({
-                                    type: messageTypes.REDIRECT_TO,
-                                    tabId: chrome.devtools.inspectedWindow.tabId,
-                                    payload: {
-                                        address: articleSelected.url
-                                    }
-                                });
+                                console.log(articleSelected);
+                                if (articleSelected) {
+                                    this.backgroundPageConnection.postMessage({
+                                        type: messageTypes.REDIRECT_TO,
+                                        tabId: chrome.devtools.inspectedWindow.tabId,
+                                        payload: {
+                                            address: articleSelected.url
+                                        }
+                                    });
+                                }
 
                             }}>Press here to go to an article that has been changed
                             </button>
@@ -211,7 +222,7 @@ export default class App extends React.Component<IAppProps, IAppState> {
                 if (this.state.selected == -1) {
                     return <h1>Det er ikke støtte for denne siden.</h1>
                 } else {
-                    return <ArticleRevision article={this.state.articles[this.state.selected]}/>
+                    return <ArticleRevision connection={this.backgroundPageConnection} article={this.state.articles[this.state.selected]}/>
                 }
             }
         }

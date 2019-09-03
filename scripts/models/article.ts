@@ -13,8 +13,7 @@ export interface IArticle {
     category: ArticleCategory,
     headline: number,
     news_site: number,
-    word_cloud: string,
     revisions: IArticleRevision[],
-    diffs: string[]
+    url:string,
 }
 

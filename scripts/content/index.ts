@@ -3,13 +3,13 @@ import {Overlay} from "./overlay";
 
 let overlay = null;
 
-function onMessageDo(request) {
-    console.log(request);
-    switch (request.type) {
+function onMessageDo(message) {
+    console.log(message);
+    switch (message.type) {
         case messageTypes.INIT: {
             console.log("Creating overlay");
-            let site = request.payload.site;
-            let _class = request.payload._class;
+            let site = message.payload.site;
+            let _class = message.payload._class;
             overlay = new Overlay(site, _class);
             // Overlay created;
             // Will run again when we access a new page though
@@ -42,10 +42,19 @@ function onMessageDo(request) {
         }
 
         case messageTypes.REDIRECT_TO: {
-            console.log('Redirecting to ' + request.payload.address);
-            window.location.href = request.payload.address;
+            console.log('Redirecting to ' + message.payload.address);
+            window.location.href = message.payload.address;
             break;
         }
+
+        case messageTypes.FIND_TEXT:
+            console.log('Find text.');
+            //@ts-ignore
+            if (window.find(message.payload.text, 0, 0, 1)) {
+                console.log(message.payload.text);
+            } else {
+                console.log('Couldn\'t find ' + message.payload.text);
+            }
     }
 }
 

@@ -2,7 +2,7 @@ import {ILimit, Limits} from "../models/limit";
 import {ISubmission} from "../models/submission";
 import {IArticleUrlTemplates} from "../models/ArticleUrlTemplates";
 import * as moment from 'moment-timezone'
-import Log from "./debug";
+
 /**
  * Prints a datetime or a empty string
  * @param dateString
@@ -276,8 +276,5 @@ export function getListOfTextInsideTag(text: string, tag: string): string[] {
 }
 
 export function getLocalTime(dateTime: any) {
-    Log.error(moment(dateTime));
-    Log.debug(moment.tz('Europe/Oslo', dateTime));
-
-    return moment(dateTime).tz('Europe/Oslo');
+    return moment(dateTime).add('2', "hours");
 }

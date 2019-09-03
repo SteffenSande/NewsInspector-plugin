@@ -1,6 +1,7 @@
 import {INewsSite} from "../models/newsSite";
 import {find_headline_id} from "../util/util";
 import {messageTypes} from "../config/messageTypes";
+
 export class Overlay {
     private tagClass: string;
     private headlines: any;
@@ -13,7 +14,6 @@ export class Overlay {
         this.tagClass = tagClass;
         this.headlines = document.querySelectorAll(tagClass);
         this.hooverOn = false;
-        console.log(this.headlines);
 
         document.onkeydown = (event) => {
             // Used switch in case we wanted more buttons to do stuff
@@ -38,6 +38,7 @@ export class Overlay {
         for (let i = 0; i < this.headlines.length; i++) {
             let headline = this.headlines[i];
             headline.onmouseover = (event) => {
+
                 if (this.hooverOn) {
                     let id = this.findHeadlineId(headline);
                     console.log('The selected headline is: ' + id);

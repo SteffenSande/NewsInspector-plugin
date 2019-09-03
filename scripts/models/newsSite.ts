@@ -1,4 +1,4 @@
-import {headline} from "./headline";
+import {IHeadline} from "./headline";
 import {IArticleTemplate} from "./articleTemplate";
 import {IArticleUrlTemplates} from "./ArticleUrlTemplates";
 export interface INewsSite {
@@ -10,7 +10,7 @@ export interface INewsSite {
     max_headlines_count: number,
     articleTemplate: IArticleTemplate,
     headlineTemplate: IHeadlineTemplate,
-    headlines: headline[],
+    headlines: IHeadline[],
     articles: any[],
     urlTemplates: IArticleUrlTemplates[],
     word_cloud: string
